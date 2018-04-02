@@ -15,6 +15,7 @@ Route::get('/','WelcomeController@index');
 
 Route::resource('category','CategoryController');
 Route::get('parent_category','CategoryController@parent_category')->name('parent-category');
+Route::get('subcategory/{id}','CategoryController@sub_category');
 Route::resource('post','PostController');
 Auth::routes();
 
