@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
     <title>Surprise Communication</title>
     <style>
         html,body{
@@ -58,8 +58,8 @@
                         <a href="{{route('category.index')}}" class="list-group-item list-group-item-action rounded-0">
                             Manage Categories
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action">Manage Posts</a>
-                        <a href="#" class="list-group-item list-group-item-action">Manage Gallery</a>
+                        <a href="{{route('posts.index')}}" class="list-group-item list-group-item-action">Manage Posts</a>
+                        <a href="{{route('galleries.index')}}" class="list-group-item list-group-item-action">Manage Gallery</a>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
-
+<script src="{{asset('js/custom.js')}}"></script>
 <script>
 //create category page get category
         $.ajax({
@@ -106,7 +106,7 @@
                $('#sub_category').html("");
            },
            success: function (data) {
-               $('#sub_category').append($('<option>').text('select sub category').attr('value',null));
+               $('#sub_category').append($('<option>').text('select sub category').attr('value',''));
 
                $.each(data, function (key, value) {
                    $('#sub_category').append($('<option>').text(value.sub_category_name).attr('value', value.sub_category_id));

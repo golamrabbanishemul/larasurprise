@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('description');
+            $table->integer('category_id');
             $table->string('image');
             $table->tinyInteger('home');
             $table->tinyInteger('publication_status');

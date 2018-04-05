@@ -15,16 +15,12 @@
         <div class="container">
             <div class="row">
                 <div class="order-2 order-md-1 col-md-8 order-md-2">
-                    <div class="section-title text-white bar">UNDERGROUND FIBER LAYING SERVICES</div>
-                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi
-                        asperiores at commodi facere,
-                        facilis harum ipsam maiores nisi non obcaecati officia quibusdam soluta sunt tenetur ullam
-                        veritatis
-                        voluptate voluptatum!</p>
+                    <div class="section-title text-white bar">{{$cat1->name}}</div>
+                    <p class="text-white">{!! str_limit($cat1->description,300)!!}</p>
                     <button type="button" class="btn btn-outline-light">More</button>
                 </div>
                 <div class=" order-1 order-md-2 col-md-4">
-                    <img src="images/11.jpg" class="img-fluid rounded" alt="Responsive image">
+                    <img src="{{asset('images/'.$cat1->image)}}" class="img-fluid rounded" alt="Responsive image">
                 </div>
             </div>
         </div>
@@ -36,16 +32,12 @@
         <div class="container">
             <div class="row">
                 <div class="order-2 order-md-1 col-md-8 order-md-2">
-                    <div class="section-title text-white bar">UNDERGROUND OPTICAL FIBER CABLE</div>
-                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi
-                        asperiores at commodi facere,
-                        facilis harum ipsam maiores nisi non obcaecati officia quibusdam soluta sunt tenetur ullam
-                        veritatis
-                        voluptate voluptatum!</p>
+                    <div class="section-title text-white bar">{{$cat2->name}}</div>
+                    <p class="text-white">{!! str_limit($cat2->description,300)!!}</p>
                     <button type="button" class="btn btn-outline-light">More</button>
                 </div>
                 <div class=" order-1 order-md-2 col-md-4">
-                    <img src="images/12.jpg" class="img-fluid rounded" alt="Responsive image">
+                    <img src="{{asset('images/'.$cat2->image)}}" class="img-fluid rounded" alt="Responsive image">
                 </div>
             </div>
         </div>
@@ -57,16 +49,12 @@
         <div class="container">
             <div class="row">
                 <div class="order-2 order-md-1 col-md-8 order-md-2">
-                    <div class="section-title bar">FIBER ACCESSORIES</div>
-                    <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi asperiores
-                        at commodi facere,
-                        facilis harum ipsam maiores nisi non obcaecati officia quibusdam soluta sunt tenetur ullam
-                        veritatis
-                        voluptate voluptatum!</p>
+                    <div class="section-title bar">{{$cat3->name}}</div>
+                    <p class="text-dark">{!! str_limit($cat3->description,300)!!}</p>
                     <button type="button" class="btn btn-outline-info">More</button>
                 </div>
                 <div class=" order-1 order-md-2 col-md-4">
-                    <img src="images/13.png" class="img-fluid rounded" alt="Responsive image">
+                    <img src="{{asset('images/'.$cat3->image)}}" class="img-fluid rounded" alt="Responsive image">
                 </div>
             </div>
         </div>

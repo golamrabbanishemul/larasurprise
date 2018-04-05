@@ -52,9 +52,10 @@ class CategoryController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-//            'parent_category' => 'required',
+            'description' => 'sometimes',
             'image' => 'sometimes',
-            'publication_status' => 'required'
+            'publication_status' => 'required',
+            'position' => 'sometimes'
         ]);
 
         $category = new Category();
@@ -68,7 +69,7 @@ class CategoryController extends Controller
         } else {
             $categoryid = 0;
         }
-//        dd($request);
+
         $category->parent_category = $categoryid;
         if ($request->hasFile('image')) {
 
@@ -78,7 +79,7 @@ class CategoryController extends Controller
             Image::make($image)->save($location, 90);
             $category->image = $file_name;
         }
-
+        $category->description = $request->description;
         $category->publication_status = $request->publication_status;
         $category->save();
 
@@ -123,6 +124,8 @@ class CategoryController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'parent_cat' => 'required',
+            'description' => 'sometimes',
+            'position' => 'sometimes',
             'image' => 'sometimes',
             'publication_status' => 'required'
         ]);
@@ -139,25 +142,37 @@ class CategoryController extends Controller
             Image::make($image)->save($location, 90);
             $old = $category->image;
             $category->image = $file_name;
-            unlink('images/' . $old);
+            if ($old) {
+                unlink('images/' . $old);
+            }
         }
 
+        $category->position = $request->position;
+        $category->description = $request->description;
         $category->publication_status = $request->publication_status;
 
         $category->save();
 
-        Session::flash('message', 'Category Update Successfully ');
+        $request->session()->flash('message', 'Category Update Successfully ');
 
         return redirect()->route('category.index');
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Category $category
-     * @return \Illuminate\Http\Response
-     */
+    public function publish_category($id)
+    {
+        $post = Category::where('id', $id)->update(['publication_status' => 1]);
+        Session::flash('success', 'Category Published successfully');
+        return redirect()->route('category.index')->withPost($post);
+    }
+
+    public function unpublish_category($id)
+    {
+        $post = Category::where('id', $id)->update(['publication_status' => 0]);
+        Session::flash('success', 'Category Un Published successfully');
+        return redirect()->route('category.index')->withPost($post);
+    }
+
     public function destroy(Category $category)
     {
         $category->delete();

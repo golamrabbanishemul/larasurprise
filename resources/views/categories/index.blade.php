@@ -7,6 +7,15 @@
             <div class="d-inline"><a href="{{route('category.create')}}" class="btn btn-outline-primary btn-sm"> Add New
                     +</a></div>
         </div>
+
+        @if(Session::get('message'))
+            <div class="alert alert-success alert-dismissible fade show success_msg" role="alert">
+                <h4>{{Session::get('message')}}</h4>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <div class="card-body">
             <table class="table table-bordered  mt-1">
                 <thead class="bg-light">

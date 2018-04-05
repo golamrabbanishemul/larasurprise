@@ -1,7 +1,7 @@
 @extends('admin.admin_master')
 
 @section('main_content')
-            <div class="offset-sm-1 col-sm-8">
+            <div class="col-sm-10">
     <div class="card mt-3">
         <div class="card-header">
             <div class="d-inline pr-4">CREATE CATEGORIES</div>
@@ -40,6 +40,10 @@
                 <div class="form-group">
                     {{Form::label('name', 'Name:')}}
                     {{Form::text('name',null,['class'=>'form-control','autofocus','required'])}}
+                </div>
+                <div class="form-group">
+                    {{Form::label('description', 'Description')}}
+                    {{Form::textarea('description',null,['class'=>'form-control','required'])}}
                 </div>
                 <div class="form-group">
                     {{Form::label('image','Add Category Banner Image')}}
