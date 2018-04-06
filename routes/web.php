@@ -11,8 +11,19 @@
 |
 */
 
-Route::get('/','WelcomeController@index');
 
+/*FrontEnd
+ * ================================
+*/
+Route::get('/','WelcomeController@index');
+Route::get('/category-page/{id}/{name}','PageController@show');
+
+
+
+
+/*Admin panel/Backend
+ * ===========================================
+ */
 //category
 Route::resource('category','CategoryController');
 Route::get('parent_category','CategoryController@parent_category')->name('parent-category');

@@ -1,5 +1,5 @@
 @extends('admin.admin_master')
-
+@section('title','Create Category')
 @section('main_content')
             <div class="col-sm-10">
     <div class="card mt-3">

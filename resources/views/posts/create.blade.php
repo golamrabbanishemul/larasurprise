@@ -1,4 +1,5 @@
 @extends('admin.admin_master')
+@section('title','Create Post')
 @section('main_content')
     <div class="col-sm-10">
         <div class="card mt-3">
@@ -43,11 +44,6 @@
                 <div class="form-group">
                     {{Form::label('image','Add Post Banner Image')}}
                     {{Form::file('image',['class'=>'form-control'])}}
-                </div>
-
-                <div class="form-group">
-                    {{Form::label('home','Show In Home Page')}}
-                    {{ Form::checkbox('home') }}
                 </div>
                 <div class="form-group">
                     <select name="publication_status" class="form-control">

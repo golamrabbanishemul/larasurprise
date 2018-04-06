@@ -1,4 +1,5 @@
 @extends('admin.admin_master')
+@section('title','Edit Category')
 @section('main_content')
     <div class="container">
         <div class="row">
@@ -35,7 +36,7 @@
                             <select name="parent_cat" id="parent_cat" class="form-control">
                                 <option value="0">Parent Category</option>
                                 @foreach($allcat as $catrec)
-                                    <option value="{{$catrec['id']}}">
+                                    <option value="{{$catrec['id']}}" {{$category['parent_category']==$catrec['id']? 'selected':''}}>
                                         {{$catrec['name']}}
                                     </option>
                                 @endforeach
@@ -60,14 +61,14 @@
                             <div class="col-sm">
                                 <label for="position">Select Position</label>
                                 <select name="position" id="position" class="form-control">
-                                    <option value="1">Position 1</option>
-                                    <option value="2">Position 2</option>
-                                    <option value="3">Position 3</option>
-                                    <option value="4">Position 4</option>
-                                    <option value="5">Position 5</option>
-                                    <option value="6">Position 6</option>
-                                    <option value="7">Position 7</option>
-                                    <option value="8">Position 8</option>
+                                    @for($i=1; $i<=8; $i++)
+                                        @if($category['position'] == $i)
+
+                                    <option value="{{$i}}" selected>Position-{{$i}}</option>
+                                   @endif
+                                    <option value="{{$i}}">Position-{{$i}}</option>
+                                        @endfor
+
                                 </select>
                             </div>
                         </div>

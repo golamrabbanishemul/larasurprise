@@ -1,4 +1,5 @@
 @extends('admin.admin_master')
+@section('title','All Categories')
 
 @section('main_content')
     <div class="card mt-3">

@@ -1,4 +1,4 @@
-html,body{
+html, body {
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
 }
@@ -7,6 +7,7 @@ html,body{
 .navbar-light .navbar-nav .nav-link {
     color: rgb(64, 64, 64);
 }
+
 .btco-menu li > a {
     padding: 10px 15px;
     color: #000;
@@ -14,20 +15,18 @@ html,body{
 }
 
 .btco-menu .active a:focus,
-.btco-menu li a:focus ,
-.navbar > .show > a:focus{
+.btco-menu li a:focus,
+.navbar > .show > a:focus {
     background: transparent;
     outline: 0;
 }
 
-
-.dropdown-menu .show > .dropdown-toggle::after{
+.dropdown-menu .show > .dropdown-toggle::after {
     transform: rotate(-90deg);
 }
 
-
-nav{
-  border-top: 5px solid #007bff;
+nav {
+    border-top: 5px solid #007bff;
 }
 
 .navbar-toggler {
@@ -35,7 +34,7 @@ nav{
 }
 
 .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(0, 123, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(0, 123, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 .navbar-custom {
@@ -55,11 +54,12 @@ a.nav-link:hover {
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
     color: #226ece;
 }
+
 /* NAVBAR END
 =====================================*/
 
-.section-title{
-  font-size: 1.8em;
+.section-title {
+    font-size: 1.8em;
 }
 
 .bar::before {
@@ -75,22 +75,22 @@ a.nav-link:hover {
 }
 
 @media only screen and (max-width: 480px) {
-  .bar::before {
-    display: none;
-  }
+    .bar::before {
+        display: none;
+    }
 }
 
 /*section 1 start
 ===============================
 */
 
-
 /*  section7*/
-.section7{
-  background: url('../images/ct_bg.png') no-repeat;
-  position: relative;
-  background-size: cover;
+.section7 {
+    background: url('../images/ct_bg.png') no-repeat;
+    position: relative;
+    background-size: cover;
 }
+
 /*  section7 end*/
 
 /*section8*/
@@ -100,7 +100,7 @@ a.nav-link:hover {
     position: relative;
 }
 
-.contactus p{
+.contactus p {
     font-size: 12px;
 }
 
@@ -132,24 +132,55 @@ a.nav-link:hover {
     background: #0077c0;
     border-color: #0077c0;
 }
-/*section8 end*/
 
+/*section8 end*/
 
 /*
 ===================================
 details page  start
 ===================================
 */
-.details{
+.details {
     height: 25em;
 }
 
-.details-title p{
+.details-title p {
     font-size: 2em;
     border-bottom: 2px dashed #aaa;
 }
 
-.details img{
+.details img {
     height: 100% !important;
     width: 100% !important;
 }
+
+/*=================================
+Single Category Page start
+=====================================
+*/
+
+.category {
+    position: relative;
+    text-align: center;
+}
+
+.category-name {
+    position:absolute;
+    font-size: 3em;
+    top:30%;
+    width: 100%;
+
+}
+
+.category-image{
+    height: 20em;
+    margin: 3em 0 6em;
+    width: 100vw;
+}
+
+.category-image img{
+    width: 100%;
+    height: 100%;
+
+}
+

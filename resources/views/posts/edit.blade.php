@@ -1,4 +1,5 @@
 @extends('admin.admin_master')
+@section('title','Edit Post')
 @section('main_content')
     <div class="card mt-3">
         <div class="card-header"><h2>Edit Post</h2></div>
@@ -41,13 +42,6 @@
                     </select>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    {{Form::label('home','Show Home Page')}}
-                    {{Form::checkbox('home',null, ['class'=>'checkbox-inline']) }}
-                </div>
-            </div>
-
             <div class="col-sm-6">
                 <div class="form-group">
                     {{Form::label('image','Current Image')}}<br>
