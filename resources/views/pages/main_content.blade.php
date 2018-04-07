@@ -1,5 +1,5 @@
 @extends('master')
-@section('main_content')
+@section('content')
     <!-- section1 -->
     <div class="jumbotron jumbotron-fluid text-center bg-white my-5">
         <div class="container-fluid">
@@ -17,7 +17,7 @@
                 <div class="order-2 order-md-1 col-md-8 order-md-2">
                     <div class="section-title text-white bar">{{@$cat1->name}}</div>
                     <div class="text-white">{!! str_limit(@$cat1->description,300) !!}</div>
-                    <button onclick='location.href = "{{url('category-page/'.$cat1['id'].'/'.$cat1['name'])}}"' type="button" class="btn btn-outline-light">More</button>
+                    <button onclick='location.href = "{{url('category-page/'.@$cat1['id'])}}"' type="button" class="btn btn-outline-light">More</button>
                 </div>
                 <div class=" order-1 order-md-2 col-md-4">
                     <img src="{{asset('images/'.@$cat1->image)}}" class="img-fluid rounded" alt="Responsive image">
@@ -34,7 +34,7 @@
                 <div class="order-2 order-md-1 col-md-8 order-md-2">
                     <div class="section-title text-white bar">{{@$cat2->name}}</div>
                     <div class="text-white">{!! str_limit(@$cat2->description,300) !!}</div>
-                    <button type="button" class="btn btn-outline-light">More</button>
+                    <button onclick='location.href = "{{url('category-page/'.@$cat2['id'])}}"'  type="button" class="btn btn-outline-light">More</button>
                 </div>
                 <div class=" order-1 order-md-2 col-md-4">
                     <img src="{{asset('images/'.@$cat2->image)}}" class="img-fluid rounded" alt="Responsive image">
@@ -51,7 +51,7 @@
                 <div class="order-2 order-md-1 col-md-8 order-md-2">
                     <div class="section-title bar">{{@$cat3->name}}</div>
                     <div class="text-dark">{!! str_limit(@$cat3->description,300) !!}</div>
-                    <button type="button" class="btn btn-outline-info">More</button>
+                    <button onclick='location.href = "{{url('category-page/'.@$cat3['id'])}}"'  type="button" class="btn btn-outline-info">More</button>
                 </div>
                 <div class=" order-1 order-md-2 col-md-4">
                     <img src="{{asset('images/'.@$cat3->image)}}" class="img-fluid rounded" alt="Responsive image">
@@ -68,7 +68,7 @@
                 <div class="order-2 order-md-1 col-md-8 order-md-2">
                     <div class="section-title text-white bar">{{@$cat4->name}}</div>
                     <div class="text-white">{!! str_limit(@$cat4->description,300) !!}</div>
-                    <button type="button" class="btn btn-outline-light">More</button>
+                    <button onclick='location.href = "{{url('category-page/'.@$cat4['id'])}}"'  type="button" class="btn btn-outline-light">More</button>
                 </div>
                 <div class=" order-1 order-md-2 col-md-4">
                     <img src="{{asset('images/'.@$cat4->image)}}" class="img-fluid rounded" alt="Responsive image">
@@ -85,7 +85,7 @@
                 <div class="order-2 order-md-1 col-md-8 order-md-2">
                     <div class="section-title bar">{{@$cat5->name}}</div>
                     <div class="text-dark">{!! str_limit(@$cat5->description,300) !!}</div>
-                    <button type="button" class="btn btn-outline-info">More</button>
+                    <button onclick='location.href = "{{url('category-page/'.@$cat5['id'])}}"'  type="button" class="btn btn-outline-info">More</button>
                 </div>
                 <div class=" order-1 order-md-2 col-md-4">
                     <img src="{{asset('images/'.@$cat5->image)}}" class="img-fluid rounded" alt="Responsive image">
@@ -102,7 +102,7 @@
                 <div class="order-2 order-md-1 col-md-8 order-md-2">
                     <div class="section-title text-white bar">{{@$cat6->name}}</div>
                     <div class="text-white">{!! str_limit(@$cat6->description,300) !!}</div>
-                    <button type="button" class="btn btn-outline-info">More</button>
+                    <button onclick='location.href = "{{url('category-page/'.@$cat6['id'])}}"'  type="button" class="btn btn-outline-info">More</button>
                 </div>
                 <div class=" order-1 order-md-2 col-md-4">
                     <img src="{{asset('images/'.@$cat6->image)}}" class="img-fluid rounded" alt="Responsive image">

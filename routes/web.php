@@ -16,7 +16,7 @@
  * ================================
 */
 Route::get('/','WelcomeController@index');
-Route::get('/category-page/{id}/{name}','PageController@show');
+Route::get('/category-page/{id}','PageController@show');
 
 
 

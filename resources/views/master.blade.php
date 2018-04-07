@@ -18,7 +18,7 @@
 <head>
     <nav class="navbar navbar-expand-md navbar-primary bg-white fixed-top navbar-custom">
 
-        <a class="navbar-brand" href="#"><i class="fas fa-assistive-listening-systems"></i> SURPRISE</a>
+        <a class="navbar-brand" href="{{url('/')}}"><i class="fas fa-assistive-listening-systems"></i> SURPRISE</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -77,7 +77,7 @@
     </nav>
 </head>
 
-@yield('main_content')
+@yield('content')
 
 <!-- section8 -->
 <div class="section8 bg-primary py-5">
