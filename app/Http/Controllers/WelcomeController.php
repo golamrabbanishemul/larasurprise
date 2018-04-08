@@ -8,13 +8,27 @@ use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+//    private function categories()
+//    {
+//        $menus= Category::where('parent_category',0)->get();
+//        foreach ($menus as $menu){
+//            $category= $menu->id;
+//        }
+//        $subcategories= Category::where('parent_category',$category)->get();
+//        foreach ($subcategories as $subcategory){
+//            $subcategory= $subcategory->id;
+//        }
+//
+//        $subsubcategories= Category::where('parent_category',$subcategory->id)->get();
+//
+//    }
+
     public function index()
     {
+//        $menus= Category::where('parent_category',0)->get();
+
+//        $submenu = Category::where('id',children()->parent_category)->get();
+
         $cat1 = Category::where('position',1)->where('publication_status',1)->first();
         $cat2 = Category::where('position',2)->where('publication_status',1)->first();
         $cat3 = Category::where('position',3)->where('publication_status',1)->first();
@@ -23,7 +37,11 @@ class WelcomeController extends Controller
         $cat6 = Category::where('position',6)->where('publication_status',1)->first();
 
 
-       return view('pages.main_content',compact('cat1','cat2','cat3','cat4','cat5','cat6'));
+       return view('pages.main_content',
+           compact('cat1',
+               'cat2',
+               'cat3','cat4','cat5','cat6'
+           ));
     }
 
     /**
