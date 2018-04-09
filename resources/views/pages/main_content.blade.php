@@ -1,5 +1,5 @@
 @extends('master')
-@section('main_content')
+@section('content')
     <!-- section1 -->
     <div class="jumbotron jumbotron-fluid text-center bg-white my-5">
         <div class="container-fluid">
@@ -15,16 +15,12 @@
         <div class="container">
             <div class="row">
                 <div class="order-2 order-md-1 col-md-8 order-md-2">
-                    <div class="section-title text-white bar">UNDERGROUND FIBER LAYING SERVICES</div>
-                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi
-                        asperiores at commodi facere,
-                        facilis harum ipsam maiores nisi non obcaecati officia quibusdam soluta sunt tenetur ullam
-                        veritatis
-                        voluptate voluptatum!</p>
-                    <button type="button" class="btn btn-outline-light">More</button>
+                    <div class="section-title text-white bar">{{@$cat1->name}}</div>
+                    <div class="text-white">{!! str_limit(@$cat1->description,300) !!}</div>
+                    <button onclick='location.href = "{{url('category-page/'.@$cat1['id'])}}"' type="button" class="btn btn-outline-light">More</button>
                 </div>
                 <div class=" order-1 order-md-2 col-md-4">
-                    <img src="images/11.jpg" class="img-fluid rounded" alt="Responsive image">
+                    <img src="{{asset('images/'.@$cat1->image)}}" class="img-fluid rounded" alt="Responsive image">
                 </div>
             </div>
         </div>
@@ -36,16 +32,12 @@
         <div class="container">
             <div class="row">
                 <div class="order-2 order-md-1 col-md-8 order-md-2">
-                    <div class="section-title text-white bar">UNDERGROUND OPTICAL FIBER CABLE</div>
-                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi
-                        asperiores at commodi facere,
-                        facilis harum ipsam maiores nisi non obcaecati officia quibusdam soluta sunt tenetur ullam
-                        veritatis
-                        voluptate voluptatum!</p>
-                    <button type="button" class="btn btn-outline-light">More</button>
+                    <div class="section-title text-white bar">{{@$cat2->name}}</div>
+                    <div class="text-white">{!! str_limit(@$cat2->description,300) !!}</div>
+                    <button onclick='location.href = "{{url('category-page/'.@$cat2['id'])}}"'  type="button" class="btn btn-outline-light">More</button>
                 </div>
                 <div class=" order-1 order-md-2 col-md-4">
-                    <img src="images/12.jpg" class="img-fluid rounded" alt="Responsive image">
+                    <img src="{{asset('images/'.@$cat2->image)}}" class="img-fluid rounded" alt="Responsive image">
                 </div>
             </div>
         </div>
@@ -57,16 +49,12 @@
         <div class="container">
             <div class="row">
                 <div class="order-2 order-md-1 col-md-8 order-md-2">
-                    <div class="section-title bar">FIBER ACCESSORIES</div>
-                    <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi asperiores
-                        at commodi facere,
-                        facilis harum ipsam maiores nisi non obcaecati officia quibusdam soluta sunt tenetur ullam
-                        veritatis
-                        voluptate voluptatum!</p>
-                    <button type="button" class="btn btn-outline-info">More</button>
+                    <div class="section-title bar">{{@$cat3->name}}</div>
+                    <div class="text-dark">{!! str_limit(@$cat3->description,300) !!}</div>
+                    <button onclick='location.href = "{{url('category-page/'.@$cat3['id'])}}"'  type="button" class="btn btn-outline-info">More</button>
                 </div>
                 <div class=" order-1 order-md-2 col-md-4">
-                    <img src="images/13.png" class="img-fluid rounded" alt="Responsive image">
+                    <img src="{{asset('images/'.@$cat3->image)}}" class="img-fluid rounded" alt="Responsive image">
                 </div>
             </div>
         </div>
@@ -78,16 +66,12 @@
         <div class="container">
             <div class="row">
                 <div class="order-2 order-md-1 col-md-8 order-md-2">
-                    <div class="section-title text-white bar">HARDWARE AND SOFTWARE</div>
-                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi
-                        asperiores at commodi facere,
-                        facilis harum ipsam maiores nisi non obcaecati officia quibusdam soluta sunt tenetur ullam
-                        veritatis
-                        voluptate voluptatum!</p>
-                    <button type="button" class="btn btn-outline-light">More</button>
+                    <div class="section-title text-white bar">{{@$cat4->name}}</div>
+                    <div class="text-white">{!! str_limit(@$cat4->description,300) !!}</div>
+                    <button onclick='location.href = "{{url('category-page/'.@$cat4['id'])}}"'  type="button" class="btn btn-outline-light">More</button>
                 </div>
                 <div class=" order-1 order-md-2 col-md-4">
-                    <img src="images/14.png" class="img-fluid rounded" alt="Responsive image">
+                    <img src="{{asset('images/'.@$cat4->image)}}" class="img-fluid rounded" alt="Responsive image">
                 </div>
             </div>
         </div>
@@ -99,16 +83,12 @@
         <div class="container">
             <div class="row">
                 <div class="order-2 order-md-1 col-md-8 order-md-2">
-                    <div class="section-title bar">SURVEILLANCE SYSTEM</div>
-                    <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi asperiores
-                        at commodi facere,
-                        facilis harum ipsam maiores nisi non obcaecati officia quibusdam soluta sunt tenetur ullam
-                        veritatis
-                        voluptate voluptatum!</p>
-                    <button type="button" class="btn btn-outline-info">More</button>
+                    <div class="section-title bar">{{@$cat5->name}}</div>
+                    <div class="text-dark">{!! str_limit(@$cat5->description,300) !!}</div>
+                    <button onclick='location.href = "{{url('category-page/'.@$cat5['id'])}}"'  type="button" class="btn btn-outline-info">More</button>
                 </div>
                 <div class=" order-1 order-md-2 col-md-4">
-                    <img src="images/15.jpg" class="img-fluid rounded" alt="Responsive image">
+                    <img src="{{asset('images/'.@$cat5->image)}}" class="img-fluid rounded" alt="Responsive image">
                 </div>
             </div>
         </div>
@@ -120,16 +100,12 @@
         <div class="container">
             <div class="row">
                 <div class="order-2 order-md-1 col-md-8 order-md-2">
-                    <div class="section-title text-white bar">CONSTRUCTION</div>
-                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi
-                        asperiores at commodi facere,
-                        facilis harum ipsam maiores nisi non obcaecati officia quibusdam soluta sunt tenetur ullam
-                        veritatis
-                        voluptate voluptatum!</p>
-                    <button type="button" class="btn btn-outline-info">More</button>
+                    <div class="section-title text-white bar">{{@$cat6->name}}</div>
+                    <div class="text-white">{!! str_limit(@$cat6->description,300) !!}</div>
+                    <button onclick='location.href = "{{url('category-page/'.@$cat6['id'])}}"'  type="button" class="btn btn-outline-info">More</button>
                 </div>
                 <div class=" order-1 order-md-2 col-md-4">
-                    <img src="images/16.jpg" class="img-fluid rounded" alt="Responsive image">
+                    <img src="{{asset('images/'.@$cat6->image)}}" class="img-fluid rounded" alt="Responsive image">
                 </div>
             </div>
         </div>
