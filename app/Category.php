@@ -13,7 +13,7 @@ class Category extends Model
 
     public function children()
     {
-        return $this->hasMany(Category::class, 'parent_category','id');
+        return $this->belongsTo(Category::class, 'parent_category','id');
     }
 
     public function parent()

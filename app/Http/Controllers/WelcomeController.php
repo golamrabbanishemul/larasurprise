@@ -25,8 +25,8 @@ class WelcomeController extends Controller
 
     public function index()
     {
-//        $menus= Category::where('parent_category',0)->get();
-
+//        $menus= Category::with('children')->get();
+//dd($menus);
 //        $submenu = Category::where('id',children()->parent_category)->get();
 
         $cat1 = Category::where('position',1)->where('publication_status',1)->first();
