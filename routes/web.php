@@ -18,8 +18,6 @@
 Route::get('/','WelcomeController@index');
 Route::get('/category-page/{id}','PageController@show');
 
-
-
 /*Admin panel/Backend
  * ===========================================
  */

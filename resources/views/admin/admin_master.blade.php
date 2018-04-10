@@ -70,7 +70,12 @@
         </div>
     </div>
 </div>
+<div class="container-fluid bg-dark py-3 mt-5">
+    <div class="row">
+        <p class="text-center text-white">&copy;surprise communication</p>
 
+    </div>
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
