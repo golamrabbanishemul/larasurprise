@@ -23,50 +23,89 @@
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-                <?php
-                    $menus =\App\Category::where('parent_category',0)->get();
-                    foreach ($menus as $menu):
-                        $men[]=$menu->id;
-                        endforeach;
+@php
+$categories = \App\Category::where('parent_category',0)->get();
+foreach ($categories as $category){
+$cat[]=$category->id;
+}
+$subCategories= \App\Category::whereIn('parent_category',$cat)->get();
+foreach ($subCategories as $key => $subCategory){
+$catt[] = $subCategory->id;
+}
+$subsubCategories= \App\Category::whereIn('parent_category',$catt)->get();
 
-
-                $submenus = \App\Category::whereIn('parent_category',$men)->get();
-
-               ?>
-
-                <li class="nav-item">
+@endphp
+                <li class="nav-item active">
                     <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
                 </li>
-                @foreach($menus as $menu)
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">{{$menu->name}}</a>
+                @foreach($categories as $category)
+                    @if($category->id !== $subCategories[0]->parent_category)
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{$category->name}}</a>
+                </li>@endif
+                    @if($category->id == $subCategories[0]->parent_category)
 
-                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    @foreach($submenus as $submenu)
-                        @if($submenu->parent_category == $menu->id)
-                                    <li><a class="dropdown-item dropdown-toggle" href="#">{{$submenu->name}}</a>
-                                    </li>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="https://bootstrapthemes.co" id="navbarDropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{$category->name}}
+                        </a>
+                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+
+                        @foreach($subCategories as $key=> $subCategory)
+                                    @if($subCategory->id !==$subsubCategories[0]->parent_category )
+                            <li><a class="dropdown-item" href="#">{{$subCategory->name}}</a></li>
+                                    @endif
+                    @if($subCategory->id ==$subsubCategories[0]->parent_category )
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       {{$subCategory->name}}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        @foreach($subsubCategories as $subsubCategory)
+                    {{--<li><a class="dropdown-item" href="#">{{$subCategory->name}}</a></li>--}}
+
+                        {{--<li><a class="dropdown-item dropdown-toggle" href="#">TELECOMMUNICATION</a>--}}
+                            {{--<ul class="dropdown-menu dropdown-menu-right">--}}
+                                <li><a class="dropdown-item" href="#">{{$subsubCategory->name}}</a></li>
+                                {{--<li><a class="dropdown-item" href="#">UNDERGROUND OPTICAL FIBER CABLE</a></li>--}}
+                                {{--<li><a class="dropdown-item" href="#">FIBER ACCESSORIES</a></li>--}}
+                            {{--</ul>--}}
+                        {{--</li>--}}
+                        {{--<li><a class="dropdown-item" href="#">HARDWARE & SOFTWARE</a></li>--}}
+                        {{--<li><a class="dropdown-item" href="#">SURVEILLANCE SYSTEM</a></li>--}}
+                        {{--<li><a class="dropdown-item" href="#">CONSTRUCTION</a></li>--}}
+                            @endforeach
+                    </ul>
+                </li>
                             @endif
                         @endforeach
-                                </ul>
-                    </li>
-                @endforeach
-
+                            </ul>
+                            </li>
+                @endif
+                    @endforeach
             </ul>
+
+
 
             {{--<div class="collapse navbar-collapse" id="navbarNavDropdown">--}}
                 {{--<ul class="navbar-nav ml-auto">--}}
+
                     {{--<li class="nav-item active">--}}
                         {{--<a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>--}}
                     {{--</li>--}}
+
                     {{--<li class="nav-item">--}}
                         {{--<a class="nav-link" href="#">ABOUT</a>--}}
                     {{--</li>--}}
 
                     {{--<li class="nav-item dropdown">--}}
-                        {{--<a class="nav-link dropdown-toggle" href="https://bootstrapthemes.co" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                        {{--<a class="nav-link dropdown-toggle" href="https://bootstrapthemes.co" id="navbarDropdownMenuLink"--}}
+                           {{--data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
                             {{--SERVICES--}}
                         {{--</a>--}}
                         {{--<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">--}}
@@ -75,27 +114,11 @@
                                     {{--<li><a class="dropdown-item" href="#">UNDERGROUND FIBER LAYING SERVICE</a></li>--}}
                                     {{--<li><a class="dropdown-item" href="#">UNDERGROUND OPTICAL FIBER CABLE</a></li>--}}
                                     {{--<li><a class="dropdown-item" href="#">FIBER ACCESSORIES</a></li>--}}
-
-
-                                    {{--<li><a class="dropdown-item dropdown-toggle" href="#">Subsubmenu</a>--}}
-                                        {{--<ul class="dropdown-menu dropdown-menu-right">--}}
-                                            {{--<li><a class="dropdown-item" href="#">Subsubmenu action aa</a></li>--}}
-                                            {{--<li><a class="dropdown-item" href="#">Another subsubmenu action</a></li>--}}
-                                        {{--</ul>--}}
-                                    {{--</li>--}}
-                                    {{--<li><a class="dropdown-item dropdown-toggle" href="#">Second subsubmenu</a>--}}
-                                        {{--<ul class="dropdown-menu dropdown-menu-right">--}}
-                                            {{--<li><a class="dropdown-item" href="#">Subsubmenu action bb</a></li>--}}
-                                            {{--<li><a class="dropdown-item" href="#">Another subsubmenu action</a></li>--}}
-                                        {{--</ul>--}}
-                                    {{--</li>--}}
                                 {{--</ul>--}}
                             {{--</li>--}}
                             {{--<li><a class="dropdown-item" href="#">HARDWARE & SOFTWARE</a></li>--}}
                             {{--<li><a class="dropdown-item" href="#">SURVEILLANCE SYSTEM</a></li>--}}
                             {{--<li><a class="dropdown-item" href="#">CONSTRUCTION</a></li>--}}
-
-
                         {{--</ul>--}}
                     {{--</li>--}}
                     {{--<li class="nav-item">--}}
@@ -103,12 +126,12 @@
                     {{--</li>--}}
                     {{--<li class="nav-item">--}}
                         {{--<a class="nav-link" href="#">MEDIA</a>--}}
-                    {{--</li><li class="nav-item">--}}
+                    {{--</li>--}}
+                    {{--<li class="nav-item">--}}
                         {{--<a class="nav-link" href="#">CLIENTS</a>--}}
                     {{--</li>--}}
                 {{--</ul>--}}
             {{--</div>--}}
-
         </div>
     </nav>
 </head>
