@@ -50,6 +50,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'name' => 'required|max:255',
             'description' => 'sometimes',
@@ -57,7 +58,6 @@ class CategoryController extends Controller
             'publication_status' => 'required',
             'position' => 'sometimes'
         ]);
-
         $category = new Category();
         $category->name = $request->name;
         $sub = $request->sub_category;
@@ -80,6 +80,7 @@ class CategoryController extends Controller
             $category->image = $file_name;
         }
         $category->description = $request->description;
+        $category->position = $request->position;
         $category->publication_status = $request->publication_status;
         $category->save();
 

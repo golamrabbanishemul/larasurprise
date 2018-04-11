@@ -8,26 +8,10 @@ use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
 {
-//    private function categories()
-//    {
-//        $menus= Category::where('parent_category',0)->get();
-//        foreach ($menus as $menu){
-//            $category= $menu->id;
-//        }
-//        $subcategories= Category::where('parent_category',$category)->get();
-//        foreach ($subcategories as $subcategory){
-//            $subcategory= $subcategory->id;
-//        }
-//
-//        $subsubcategories= Category::where('parent_category',$subcategory->id)->get();
-//
-//    }
+
 
     public function index()
     {
-//        $menus= Category::with('children')->get();
-//dd($menus);
-//        $submenu = Category::where('id',children()->parent_category)->get();
 
         $cat1 = Category::where('position',1)->where('publication_status',1)->first();
         $cat2 = Category::where('position',2)->where('publication_status',1)->first();
