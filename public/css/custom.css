@@ -37,6 +37,11 @@ nav {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(0, 123, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
+.nav-item {
+    color: #007bff;
+}
+
+
 .navbar-custom {
     background: #ffffff;
     border-top: 5px solid cornflowerblue;
@@ -154,6 +159,7 @@ details page  start
     width: 100% !important;
 }
 
+
 /*=================================
 Single Category Page start
 =====================================
@@ -175,6 +181,16 @@ Single Category Page start
     left: 0;
     right: 0;
 
+}
+
+.category::before {
+    position: absolute;
+    content: ' ';
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: #0000007a;
 }
 
 

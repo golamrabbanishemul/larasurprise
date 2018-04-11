@@ -26,117 +26,57 @@
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-                @php
-                    $categories = \App\Category::where('parent_category',0)->get();
-                    foreach ($categories as $category){
-                    $cat[]=$category->id;
-                    }
-                    $subCategories= \App\Category::whereIn('parent_category',$cat)->get();
-                    foreach ($subCategories as $key => $subCategory){
-                    $catt[] = $subCategory->id;
-                    }
-                    $subsubCategories= \App\Category::whereIn('parent_category',$catt)->get();
-
-                @endphp
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{url('/')}}">HOME</a>
                 </li>
-                @foreach($categories as $category)
-                    @if($category->id !== $subCategories[0]->parent_category)
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url('category-page/'.$category->id)}}">{{$category->name}}</a>
-                        </li>@endif
-                    @if($category->id == $subCategories[0]->parent_category)
+                <?php
+                $categories = \App\Category::all();
+                foreach ($categories as $category) {
+                $subCategories = \App\Category::where('parent_category', $category->id)->first();
+                if ($category->parent_category == 0 && empty($subCategories)) {
+                ?>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="https://bootstrapthemes.co"
-                               id="navbarDropdownMenuLink"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{$category->name}}
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url('category-page/'.$category->id)}}">{{$category->name}} </a>
+                </li>
 
-                                @foreach($subCategories as $key=> $subCategory)
-                                    @if($subCategory->id !==$subsubCategories[0]->parent_category )
-                                        <li><a class="dropdown-item"
-                                               href="{{url('category-page/'.$subCategory->id)}}">{{$subCategory->name}}</a>
-                                        </li>
-                                    @endif
-                                    @if($subCategory->id ==$subsubCategories[0]->parent_category )
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink"
-                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                {{$subCategory->name}}
-                                            </a>
-                                            <ul class="dropdown-menu dropdown-menu-right"
-                                                aria-labelledby="navbarDropdownMenuLink">
-                                                @foreach($subsubCategories as $subsubCategory)
-                                                    {{--<li><a class="dropdown-item" href="#">{{$subCategory->name}}</a></li>--}}
+                <?php } elseif ($category->parent_category == 0 && !empty($subCategories)) {  ?>
 
-                                                    {{--<li><a class="dropdown-item dropdown-toggle" href="#">TELECOMMUNICATION</a>--}}
-                                                    {{--<ul class="dropdown-menu dropdown-menu-right">--}}
-                                                    <li><a class="dropdown-item"
-                                                           href="{{url('category-page/'.$subsubCategory->id)}}">{{$subsubCategory->name}}</a>
-                                                    </li>
-                                                    {{--<li><a class="dropdown-item" href="#">UNDERGROUND OPTICAL FIBER CABLE</a></li>--}}
-                                                    {{--<li><a class="dropdown-item" href="#">FIBER ACCESSORIES</a></li>--}}
-                                                    {{--</ul>--}}
-                                                    {{--</li>--}}
-                                                    {{--<li><a class="dropdown-item" href="#">HARDWARE & SOFTWARE</a></li>--}}
-                                                    {{--<li><a class="dropdown-item" href="#">SURVEILLANCE SYSTEM</a></li>--}}
-                                                    {{--<li><a class="dropdown-item" href="#">CONSTRUCTION</a></li>--}}
-                                                @endforeach
-                                            </ul>
-                                        </li>
-                                    @endif
-                                @endforeach
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{$category->name }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <?php
+                        $checks = \App\Category::where('parent_category', $category->id)->get();
+                        foreach ($checks as $check) {
+                        $sub_sub_check = \App\Category::where('parent_category', $check->id)->first();
+                        if (empty($sub_sub_check)) {   ?>
+
+                        <li><a class="dropdown-item" href="{{url('category-page/'.$check->id)}}">{{$check->name}}</a>
+                        </li>
+
+                        <?php } elseif (!empty($sub_sub_check)) { ?>
+
+                        <li><a class="dropdown-item dropdown-toggle" href="#">{{$check->name}}</a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <?php
+                                $sub_sub_categories = \App\Category::where('parent_category', $check->id)->get();
+                                foreach ($sub_sub_categories as $sub_sub_category) {  ?>
+                                <li><a class="dropdown-item"
+                                       href="{{url('category-page/'.$sub_sub_category->id)}}">{{$sub_sub_category->name}}</a>
+                                </li>
+                                <?php } ?>
                             </ul>
                         </li>
-                    @endif
-                @endforeach
+                        <?php }  } ?>
+                    </ul>
+                </li>
+
+                <?php } }  ?>
+
             </ul>
-
-
-            {{--<div class="collapse navbar-collapse" id="navbarNavDropdown">--}}
-            {{--<ul class="navbar-nav ml-auto">--}}
-
-            {{--<li class="nav-item active">--}}
-            {{--<a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>--}}
-            {{--</li>--}}
-
-            {{--<li class="nav-item">--}}
-            {{--<a class="nav-link" href="#">ABOUT</a>--}}
-            {{--</li>--}}
-
-            {{--<li class="nav-item dropdown">--}}
-            {{--<a class="nav-link dropdown-toggle" href="https://bootstrapthemes.co" id="navbarDropdownMenuLink"--}}
-            {{--data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-            {{--SERVICES--}}
-            {{--</a>--}}
-            {{--<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">--}}
-            {{--<li><a class="dropdown-item dropdown-toggle" href="#">TELECOMMUNICATION</a>--}}
-            {{--<ul class="dropdown-menu dropdown-menu-right">--}}
-            {{--<li><a class="dropdown-item" href="#">UNDERGROUND FIBER LAYING SERVICE</a></li>--}}
-            {{--<li><a class="dropdown-item" href="#">UNDERGROUND OPTICAL FIBER CABLE</a></li>--}}
-            {{--<li><a class="dropdown-item" href="#">FIBER ACCESSORIES</a></li>--}}
-            {{--</ul>--}}
-            {{--</li>--}}
-            {{--<li><a class="dropdown-item" href="#">HARDWARE & SOFTWARE</a></li>--}}
-            {{--<li><a class="dropdown-item" href="#">SURVEILLANCE SYSTEM</a></li>--}}
-            {{--<li><a class="dropdown-item" href="#">CONSTRUCTION</a></li>--}}
-            {{--</ul>--}}
-            {{--</li>--}}
-            {{--<li class="nav-item">--}}
-            {{--<a class="nav-link" href="#">CONTACTS</a>--}}
-            {{--</li>--}}
-            {{--<li class="nav-item">--}}
-            {{--<a class="nav-link" href="#">MEDIA</a>--}}
-            {{--</li>--}}
-            {{--<li class="nav-item">--}}
-            {{--<a class="nav-link" href="#">CLIENTS</a>--}}
-            {{--</li>--}}
-            {{--</ul>--}}
-            {{--</div>--}}
         </div>
     </nav>
 </head>
