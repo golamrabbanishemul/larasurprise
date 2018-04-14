@@ -26,11 +26,11 @@
                         <div class="container py-5">
                             <div class="row">
 
-                                <div class="order-2 order-md-1 col-md-8 order-md-2">
+                                <div class="order-2 order-md-1 col-md-6 order-md-2">
                                     <div class="section-title text-white bar">{{@$post->title}}</div>
                                     <div class="text-white">{!! @$post->description !!}</div>
                                 </div>
-                                <div class=" order-1 order-md-2 col-md-4">
+                                <div class=" order-1 order-md-2 col-md-6">
                                     <img src="{{asset('images/'.@$post->image)}}" class="img-fluid rounded"
                                          alt="Responsive image">
                                 </div>

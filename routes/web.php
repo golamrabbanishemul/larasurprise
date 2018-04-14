@@ -18,6 +18,10 @@
 Route::get('/','WelcomeController@index');
 Route::get('/category-page/{id}','PageController@show');
 
+
+Route::get('/gallery',function (){
+   return view('pages.gallery_page');
+});
 /*Admin panel/Backend
  * ===========================================
  */
@@ -35,6 +39,10 @@ Route::get('unpublished-post/{id}','PostController@unpublish_post');
 Route::resource('galleries','GalleryController');
 Route::get('published-gallery/{id}','GalleryController@publish_gallery');
 Route::get('unpublished-gallery/{id}','GalleryController@unpublish_gallery');
+//gallery post
+Route::resource('gposts','GalleryPostController');
+Route::get('published-gpost/{id}','GalleryPostController@publish_galleryPost');
+Route::get('unpublished-gpost/{id}','GalleryPostController@unpublish_galleryPost');
 
 Auth::routes();
 

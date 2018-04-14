@@ -76,7 +76,7 @@ class CategoryController extends Controller
             $image = $request->file('image');
             $file_name = time() . '.' . $image->getClientOriginalExtension();
             $location = public_path('images/' . $file_name);
-            Image::make($image)->save($location, 90);
+            Image::make($image)->resize(540,269)->save($location, 90);
             $category->image = $file_name;
         }
         $category->description = $request->description;
@@ -140,7 +140,7 @@ class CategoryController extends Controller
             $image = $request->file('image');
             $file_name = time() . '.' . $image->getClientOriginalExtension();
             $location = public_path('images/' . $file_name);
-            Image::make($image)->save($location, 90);
+            Image::make($image)->resize(540,269)->save($location, 90);
             $old = $category->image;
             $category->image = $file_name;
             if ($old) {

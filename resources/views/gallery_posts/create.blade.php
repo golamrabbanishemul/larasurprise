@@ -1,10 +1,10 @@
 @extends('admin.admin_master')
-@section('title','Create Post')
+@section('title','Create Gallery Image')
 @section('main_content')
-    <div class="col-sm-10 pb-5 mb-5">
+    <div class="col-sm-10">
         <div class="card mt-3">
             <div class="card-header">
-                <div class="d-inline pr-4">CREATE POST</div>
+                <div class="d-inline pr-4 text-uppercase">CREATE GALLERY Image</div>
             </div>
             <div class="card-body">
                 @if(Session::get('message'))
@@ -24,34 +24,32 @@
                         </ul>
                     </div>
                 @endif
-                {!! Form::open(['route'=>['posts.store'],'files'=>true]) !!}
+                {!! Form::open(['route'=>['gposts.store'],'files'=>true]) !!}
+
                 <div class="form-group">
-                    <label for="title">Title </label>
-                    <input type="text" id="title" name="title" class="form-control">
-                </div>
-                <div class="form-group">
-                    {{Form::label('description','Post Description')}}
-                    {{Form::textarea('description', null, ['class'=>'form-control']) }}
-                </div>
-                <div class="form-group">
-                    <label for="category_id">Select Category</label>
-                    <select name="category_id" id="category_id" class="form-control">
-                        @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
-                    {{Form::label('image','Add Post Banner Image')}}
+                    {{Form::label('image','Add  Image')}}
                     {{Form::file('image',['class'=>'form-control'])}}
                 </div>
+
+                <div class="form-group">
+                    <label for="title">Caption </label>
+                    <input type="text" id="title" name="title" class="form-control">
+                </div>
+                    <div class="form-group">
+                        <label for="gallery_id">Select Gallery</label>
+                        <select name="gallery_id" id="gallery_id" class="form-control">
+                            @foreach($galleries as $gallery)
+                                <option value="{{$gallery->id}}">{{$gallery->title}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 <div class="form-group">
                     <select name="publication_status" class="form-control">
                         <option value="1">Published</option>
                         <option value="0">Un Published</option>
                     </select>
                 </div>
-                {{Form::submit('Create New Post',['class'=>'btn btn-success btn-block'])}}
+                {{Form::submit('Save',['class'=>'btn btn-success btn-block'])}}
                 {!! Form::close() !!}
             </div>
         </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Gallery;
+use App\GalleryPost;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -49,6 +51,11 @@ class PageController extends Controller
     {
        $category = Category::where('id',$id)->first();
        $posts = Post::where('category_id',$id)->where('publication_status',1)->get();
+       $galleries= Gallery::with('gallery_posts')->where('publication_status',1)->get();
+
+       if(strtolower($category->name) == 'image gallery'){
+           return view('pages.gallery_page',compact('category','galleries'));
+       }
        return view('pages.category_page',compact('category','posts'));
     }
 

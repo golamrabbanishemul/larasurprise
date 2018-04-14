@@ -30,11 +30,6 @@
                 </div>
 
                 <div class="form-group">
-                    {{Form::label('image','Add Post Banner Image')}}
-                    {{Form::file('image',['class'=>'form-control'])}}
-                </div>
-
-                <div class="form-group">
                     <select name="publication_status" class="form-control">
                         <option value="1">Published</option>
                         <option value="0">Un Published</option>

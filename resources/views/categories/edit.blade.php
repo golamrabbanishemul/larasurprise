@@ -1,7 +1,7 @@
 @extends('admin.admin_master')
 @section('title','Edit Category')
 @section('main_content')
-    <div class="container">
+    <div class="container mb-5 pb-5">
         <div class="row">
             <div class="col-sm-10">
                 <div class="card mt-3">
@@ -61,7 +61,7 @@
                             <div class="col-sm">
                                 <label for="position">Select Position</label>
                                 <select name="position" id="position" class="form-control">
-                                    @for($i=1; $i<=8; $i++)
+                                    @for($i=0; $i<=8; $i++)
                                         @if($category['position'] == $i)
 
                                     <option value="{{$i}}" selected>Position-{{$i}}</option>

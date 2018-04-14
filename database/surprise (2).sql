@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 08, 2018 at 08:36 PM
+-- Generation Time: Apr 11, 2018 at 08:52 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -67,11 +67,42 @@ INSERT INTO `categories` (`id`, `name`, `description`, `parent_category`, `image
 CREATE TABLE `galleries` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `publication_status` tinyint(4) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `galleries`
+--
+
+INSERT INTO `galleries` (`id`, `title`, `publication_status`, `created_at`, `updated_at`) VALUES
+(1, 'Data Center', 1, '2018-04-11 09:36:50', '2018-04-11 10:49:48'),
+(2, 'Open Cut', 1, '2018-04-11 09:37:05', '2018-04-11 09:37:05'),
+(3, 'Ducting', 1, '2018-04-11 09:37:13', '2018-04-11 09:39:25');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallery_posts`
+--
+
+CREATE TABLE `gallery_posts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gallery_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `publication_status` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `gallery_posts`
+--
+
+INSERT INTO `gallery_posts` (`id`, `title`, `image`, `gallery_id`, `publication_status`, `created_at`, `updated_at`) VALUES
+(1, NULL, '1523463624.png', '1', 1, '2018-04-11 10:20:24', '2018-04-11 12:37:00');
 
 -- --------------------------------------------------------
 
@@ -94,7 +125,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2018_03_29_172718_create_categories_table', 1),
 (4, '2018_03_29_174752_create_posts_table', 1),
-(5, '2018_04_04_170942_create_galleries_table', 2);
+(5, '2018_04_04_170942_create_galleries_table', 2),
+(6, '2018_04_11_154051_create_gallery_posts_table', 3);
 
 -- --------------------------------------------------------
 
@@ -155,7 +187,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Golam Rabbain', 'shemul1990@yahoo.com', '$2y$10$lM.SloYegxoT0oo9HNCLWuJS8ZSHbqtKLWhaXlMwIYSl5opirk9NS', 'WmxSg4olLsds7tIBovkORsvyrohYfTo5SKsrCMpF304cVW72HMrpLwvQTLcs', '2018-04-01 09:06:47', '2018-04-01 09:06:47');
+(1, 'Golam Rabbain', 'shemul1990@yahoo.com', '$2y$10$lM.SloYegxoT0oo9HNCLWuJS8ZSHbqtKLWhaXlMwIYSl5opirk9NS', 'LIepcN4KASIfMatqvypNZHFQmKejVi45asPlDh74Z77WjrEMywV4trvrPSL7', '2018-04-01 09:06:47', '2018-04-01 09:06:47');
 
 --
 -- Indexes for dumped tables
@@ -171,6 +203,12 @@ ALTER TABLE `categories`
 -- Indexes for table `galleries`
 --
 ALTER TABLE `galleries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gallery_posts`
+--
+ALTER TABLE `gallery_posts`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -212,13 +250,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `galleries`
 --
 ALTER TABLE `galleries`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `gallery_posts`
+--
+ALTER TABLE `gallery_posts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `posts`

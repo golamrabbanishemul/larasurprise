@@ -109,20 +109,20 @@
             </div>
             <div class="col-12 col-md-3 col-offset-md-1">
                 <h5 class="text-white">Any Query</h5>
-                <form class="border border-mute rounded p-2">
+                <form class="border border-info any-query rounded p-2">
                     <div class="form-group my-0 py-0">
                         <label for="name" class="text-white my-0">
                             <small>Name</small>
                         </label>
                         <input type="text" class="form-control form-control-sm py-0" id="name" aria-describedby="name"
-                               placeholder="Enter Name">
+                               placeholder="Enter Your Name">
                     </div>
                     <div class="form-group my-0">
                         <label for="exampleInputEmail1" class="text-white my-0">
                             <small>Email address</small>
                         </label>
                         <input type="email" class="form-control form-control-sm py-0" id="exampleInputEmail1"
-                               aria-describedby="emailHelp" placeholder="Enter email">
+                               aria-describedby="emailHelp" placeholder="Enter Your email">
                     </div>
                     <div class="form-group my-0">
                         <label for="exampleFormControlTextarea1" class="text-white my-0">

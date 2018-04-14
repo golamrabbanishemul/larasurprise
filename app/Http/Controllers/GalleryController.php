@@ -16,7 +16,7 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $galleries = Gallery::orderBy('id', 'desc')->get();
+        $galleries = Gallery::latest()->get();
         return view('galleries.index',compact('galleries'));
     }
 
@@ -42,7 +42,6 @@ class GalleryController extends Controller
 
         $this->validate($request, [
             'title' => 'required | max:255',
-            'image' => 'required',
             'publication_status' => 'required'
 
         ]);
@@ -51,14 +50,14 @@ class GalleryController extends Controller
         $gallery = new Gallery();
         $gallery->title = $request->title;
 
-        if ($request->hasFile('image')) {
-
-            $image = $request->file('image');
-            $file_name = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('gallery_images/' . $file_name);
-            Image::make($image)->save($location, 30);
-            $gallery->image = $file_name;
-        }
+//        if ($request->hasFile('image')) {
+//
+//            $image = $request->file('image');
+//            $file_name = time() . '.' . $image->getClientOriginalExtension();
+//            $location = public_path('gallery_images/' . $file_name);
+//            Image::make($image)->save($location, 30);
+//            $gallery->image = $file_name;
+//        }
 
 
         $gallery->publication_status = $request->publication_status;
@@ -118,7 +117,7 @@ class GalleryController extends Controller
     {
         $this->validate($request, [
             'title' => 'required | max:255',
-            'image' => 'sometimes',
+
             'publication_status' => 'required'
 
         ]);
@@ -126,19 +125,19 @@ class GalleryController extends Controller
 
 
         $gallery->title = $request->title;
-        if ($request->hasFile('image')) {
-            //add the new image
-            $image = $request->file('image');
-            $file_name = time() . "." . $image->getClientOriginalExtension();
-            $file_location = public_path('gallery_images/' . $file_name);
-            Image::make($image)->save($file_location, 90);
-            //get old file
-            $oldFilename = $gallery->image;
-            //update database
-            $gallery->image = $file_name;
-            //delete old file
-            unlink('gallery_images/'.$oldFilename);
-        }
+//        if ($request->hasFile('image')) {
+//            //add the new image
+//            $image = $request->file('image');
+//            $file_name = time() . "." . $image->getClientOriginalExtension();
+//            $file_location = public_path('gallery_images/' . $file_name);
+//            Image::make($image)->save($file_location, 90);
+//            //get old file
+//            $oldFilename = $gallery->image;
+//            //update database
+//            $gallery->image = $file_name;
+//            //delete old file
+//            unlink('gallery_images/'.$oldFilename);
+//        }
         $gallery->publication_status = $request->publication_status;
 
         $gallery->update();
@@ -159,9 +158,9 @@ class GalleryController extends Controller
     {
         
         $gallery->delete();
-        if($gallery->image){
-            unlink('gallery_images/'.$gallery->image);
-        }
+//        if($gallery->image){
+//            unlink('gallery_images/'.$gallery->image);
+//        }
 
         Session::flash('message', 'Gallery Delete Successfully');
         return redirect()->route('galleries.index');

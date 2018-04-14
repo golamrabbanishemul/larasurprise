@@ -89,11 +89,62 @@ a.nav-link:hover {
 ===============================
 */
 
+
+
+/*section 2 start
+================================
+*/
+
+.section2 {
+    padding: 5em 0;
+}
+
+
+
+/*section 3 start
+================================
+*/
+
+.section3 {
+    padding: 5em 0;
+}
+
+
+
+/*section 4 start
+================================
+*/
+
+.section4 {
+    padding: 5em 0;
+}
+
+
+
+/*section 5 start
+================================
+*/
+
+.section5 {
+    padding: 5em 0;
+}
+
+
+/*section 6 start
+================================
+*/
+
+.section6 {
+    padding: 5em 0;
+}
+
+
 /*  section7*/
 .section7 {
     background: url('../images/ct_bg.png') no-repeat;
     position: relative;
     background-size: cover;
+    padding: 5em 0;
 }
 
 /*  section7 end*/
@@ -103,6 +154,10 @@ a.nav-link:hover {
     background: url('../images/footer_bg.png') no-repeat;
     background-size: cover;
     position: relative;
+}
+
+.any-query {
+    background: #134ed054;
 }
 
 .contactus p {
@@ -167,7 +222,7 @@ Single Category Page start
 
 .category {
     position: relative;
-    height: 30em;
+    height: 24em;
     width: 100%;
     margin: 3em 0 4em;
 }
@@ -194,3 +249,36 @@ Single Category Page start
 }
 
 
+/*
+===========================
+Gallery page start
+===========================
+*/
+.section-gallery{
+    margin: 1em 0 3em;
+}
+
+.gallery-title {
+    font-size: 2em;
+    text-transform: capitalize;
+    background: #6f93ee;
+    padding: 0.5em 0.8em;
+    color: #fff;
+    border-radius: 25px 0px;
+    text-align: center;
+}
+
+.gallery-body {
+    border-top: 1px solid #aaa;
+    margin-top: 1.5em;
+    padding-top: 1em;
+}
+
+.gallery-image {
+    box-shadow: 1px 3px 15px rgba(0,0,0,0.12);
+}
+
+
+.gallery-image img {
+    height: 14em;
+}
