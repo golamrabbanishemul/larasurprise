@@ -66,7 +66,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-9 mb-5 pb-5">
             @yield('main_content')
         </div>
     </div>

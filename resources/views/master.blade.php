@@ -87,18 +87,27 @@
 <div class="section8 bg-primary py-5">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-4 contactus">
-                <h5 class="text-white">Contact Us</h5>
-                <p class="text-white">We are a leading end-to-end infrastructure support provider having Nationwide
-                    Telecommunication Transmission Network.
-                </p>
-                <p class="text-white"><i class="fas fa-map-marker"></i> 18, Karwan Bazar Commercial Area Dhaka -1205,
-                    Bangladesh.</p>
-                <p class="text-white"><i class="fas fa-phone"></i> +880 2 222333444-5</p>
-                <p class="text-white"><i class="fas fa-envelope"></i> info@surprisecommunications.net</p>
+            <div class="col-12 col-md-6 contactus">
+                <h5 class="text-white pb-3">Contact Us</h5>
+                <div class="row">
+                <div class="col-md-6">
+                    <p class="text-white"> <i class="fas fa-user"></i> Mohammed shahadat hossain
+                    </p>
+                    <p class="text-white"><i class="fas fa-map-marker"></i> 10 Mead Road Tmavua Suva Fiji</p>
+                    <p class="text-white"><i class="fas fa-phone"></i> +6792950541</p>
+                    <p class="text-white"><i class="fas fa-envelope"></i> surprseproducts@gmail.com</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-white"> <i class="fas fa-user"></i> Mohammed shahadat hossain
+                    </p>
+                    <p class="text-white"><i class="fas fa-map-marker"></i> 10 Mead Road Tmavua Suva Fiji</p>
+                    <p class="text-white"><i class="fas fa-phone"></i> +6792950541</p>
+                    <p class="text-white"><i class="fas fa-envelope"></i> surprseproducts@gmail.com</p>
+                </div>
+                </div>
             </div>
-            <div class="col-12 col-md-4">
-                <h5 class="text-white">Contact With Social</h5>
+            <div class="col-12 col-md-3">
+                <h5 class="text-white pb-3">Contact With Social</h5>
                 <ul class="social">
                     <li><a target="_Blank" href="https://www.facebook.com/"> <i class="fab fa-facebook-f"></i></a>
                         Facebook
@@ -107,8 +116,8 @@
                     <li><a target="_Blank" href="#"><i class="fab fa-twitter"></i></a> Twitter</li>
                 </ul>
             </div>
-            <div class="col-12 col-md-3 col-offset-md-1">
-                <h5 class="text-white">Any Query</h5>
+            <div class="col-12 col-md-3 ">
+                <h5 class="text-white pb-3">Any Query</h5>
                 <form class="border border-info any-query rounded p-2">
                     <div class="form-group my-0 py-0">
                         <label for="name" class="text-white my-0">

@@ -2,10 +2,10 @@
 @section('content')
     <!-- section1 -->
     <div class="jumbotron jumbotron-fluid text-center bg-white my-5">
-        <div class="container-fluid">
-            <h1 class="display-5">Welcome <br>To Surprise Communication</h1>
-            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-            <a href="details.html" class="btn btn-outline-info">More</a>
+        <div class="container">
+            <h1 class="display-5 title">Welcome to Surprise Product PTE LTD</h1>
+            <p class="lead px-5">Our products and services are designed to spark enthusiasm, improve quality of life, and help conserve natural resources. We want to deliver top quality and reliability. </p>
+            {{--<a href="details.html" class="btn btn-outline-info">More</a>--}}
         </div>
     </div>
     <!-- section1 end -->

@@ -28,19 +28,23 @@
                         @endif
                         {!! Form::model($category,['route'=>['category.update',$category->id],'method'=>'PUT', 'files'=>true]) !!}
                         <div class="form-group">
-                            {{Form::label('name','Edit Category Name')}}
-                            {{Form::text('name',null,['class'=>'form-control'])}}
-                        </div>
-                        <div class="form-group">
-                            <label for="parent_cat">Parent Category</label><br>
+                            <label for="parent_cat">Main Category</label><br>
                             <select name="parent_cat" id="parent_cat" class="form-control">
-                                <option value="0">Parent Category</option>
+                                <option value="0">Main Category</option>
                                 @foreach($allcat as $catrec)
                                     <option value="{{$catrec['id']}}" {{$category['parent_category']==$catrec['id']? 'selected':''}}>
                                         {{$catrec['name']}}
                                     </option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('name','Edit Category Name')}}
+                            {{Form::text('name',null,['class'=>'form-control'])}}
+                        </div>
+                        <div class="form-group">
+                            {{Form::label('title','Edit Title')}}
+                            {{Form::text('title',null,['class'=>'form-control'])}}
                         </div>
 
                         <div class="form-group">
@@ -64,10 +68,10 @@
                                     @for($i=0; $i<=8; $i++)
                                         @if($category['position'] == $i)
 
-                                    <option value="{{$i}}" selected>Position-{{$i}}</option>
-                                   @endif
-                                    <option value="{{$i}}">Position-{{$i}}</option>
-                                        @endfor
+                                            <option value="{{$i}}" selected>Position-{{$i}}</option>
+                                        @endif
+                                        <option value="{{$i}}">Position-{{$i}}</option>
+                                    @endfor
 
                                 </select>
                             </div>

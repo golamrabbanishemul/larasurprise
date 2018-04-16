@@ -53,6 +53,7 @@ class CategoryController extends Controller
 
         $this->validate($request, [
             'name' => 'required|max:255',
+            'title' => 'sometimes|max:255',
             'description' => 'sometimes',
             'image' => 'sometimes',
             'publication_status' => 'required',
@@ -60,6 +61,7 @@ class CategoryController extends Controller
         ]);
         $category = new Category();
         $category->name = $request->name;
+        $category->title = $request->title;
         $sub = $request->sub_category;
         $parent = $request->parent_category;
         if ($sub) {
@@ -124,6 +126,7 @@ class CategoryController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
+            'title' => 'sometimes|max:255',
             'parent_cat' => 'required',
             'description' => 'sometimes',
             'position' => 'sometimes',
@@ -133,6 +136,7 @@ class CategoryController extends Controller
 
 
         $category->name = $request->name;
+        $category->title = $request->title;
 
         $category->parent_category = $request->parent_cat;
         if ($request->hasFile('image')) {
