@@ -22,13 +22,23 @@ Route::get('/category-page/{id}','PageController@show');
 Route::get('/gallery',function (){
    return view('pages.gallery_page');
 });
+
+Route::get('/food',function (){
+    return view('pages.food');
+});
+
+Route::get('/test/{id}',function ($id){
+    $service= App\Category::where('parent_category',$id)->with('us')->get();
+dd($service);
+});
 /*Admin panel/Backend
  * ===========================================
  */
 //category
 Route::resource('category','CategoryController');
 Route::get('parent_category','CategoryController@parent_category')->name('parent-category');
-Route::get('subcategory/{id}','CategoryController@sub_category');
+Route::get('subcategory/{id}','CategoryController@sub_category');//for subcategory search
+Route::get('sub-subcategory/{id}','CategoryController@sub_subcategory');//for sub subcategory search
 Route::get('published-category/{id}','CategoryController@publish_category');
 Route::get('unpublished-category/{id}','CategoryController@unpublish_category');
 //post

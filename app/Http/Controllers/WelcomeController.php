@@ -20,11 +20,12 @@ $home= Category::where('name','Home')->where('publication_status',1)->first();
         $cat5 = Category::where('position',5)->where('publication_status',1)->first();
         $cat6 = Category::where('position',6)->where('publication_status',1)->first();
 
-
+$services= Category::where('parent_category',2)->with('ds')->get();
+//dd($service);
        return view('pages.main_content',
            compact('cat1',
                'cat2',
-               'cat3','cat4','cat5','cat6','home'
+               'cat3','cat4','cat5','cat6','home','services'
            ));
     }
 

@@ -50,13 +50,15 @@ class PageController extends Controller
     public function show($id)
     {
        $category = Category::where('id',$id)->first();
-       $posts = Post::where('category_id',$id)->where('publication_status',1)->get();
+       $sub_categories = Category::where('parent_category',$id)->with('ds')->get();
+//       dd($category);
+//       $posts = Post::where('category_id',$id)->where('publication_status',1)->get();
        $galleries= Gallery::with('gallery_posts')->where('publication_status',1)->get();
 
        if(strtolower($category->name) == 'image gallery'){
            return view('pages.gallery_page',compact('category','galleries'));
        }
-       return view('pages.category_page',compact('category','posts'));
+       return view('pages.category_page',compact('category','sub_categories','posts'));
     }
 
     /**

@@ -69,8 +69,9 @@
                                         @if($category['position'] == $i)
 
                                             <option value="{{$i}}" selected>Position-{{$i}}</option>
-                                        @endif
+                                        @else
                                         <option value="{{$i}}">Position-{{$i}}</option>
+                                        @endif
                                     @endfor
 
                                 </select>

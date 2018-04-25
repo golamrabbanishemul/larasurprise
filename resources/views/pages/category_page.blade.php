@@ -16,7 +16,7 @@
         </div>
     </div>
     @php($i=0)
-    @foreach($posts as $post)
+    @foreach($sub_categories as $sub_category)
         @php($i++)
         @if($i%2 == 0)
             <div class="bg-info py-3">
@@ -27,13 +27,17 @@
                             <div class="row">
 
                                 <div class="order-2 order-md-1 col-md-6 order-md-2">
-                                    <div class="section-title text-white bar">{{@$post->title}}</div>
-                                    <div class="text-white">{!! @$post->description !!}</div>
+                                    <div class="section-title text-white bar">{{@$sub_category->name}}</div>
+                                    <div class="text-white">{!!str_limit(@$sub_category->description,300) !!}</div>
+                                    <button onclick='location.href = "{{url('category-page/'.@$sub_category['id'])}}"' type="button"
+                                            class="btn btn-outline-light    ">More
+                                    </button>
                                 </div>
                                 <div class=" order-1 order-md-2 col-md-6">
-                                    <img src="{{asset('images/'.@$post->image)}}" class="img-fluid rounded"
+                                    <img src="{{asset('images/'.@$sub_category->image)}}" class="img-fluid rounded"
                                          alt="Responsive image">
                                 </div>
+
                             </div>
                         </div>
                     </div>

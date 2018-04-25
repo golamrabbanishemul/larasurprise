@@ -124,6 +124,26 @@
        }) ;
     });
 
+    $('body').on('change','#sub_category',function () {
+        var id = $(this).val();
+       $.ajax({
+           type:'GET',
+           dataType:'json',
+           url:"{{url('sub-subcategory')}}"+"/"+id,
+           beforeSend: function () {
+               $('#sub_sub_category').html("");
+           },
+           success: function (data) {
+               $('#sub_sub_category').append($('<option>').text('select sub sub category').attr('value',''));
+
+               $.each(data, function (key, value) {
+                   $('#sub_sub_category').append($('<option>').text(value.sub_subcategory_name).attr('value', value.sub_subcategory_id));
+               });
+           }
+
+       }) ;
+    });
+
 //    for flash message
 $('.success_msg,.error_msg').delay(5000).slideUp();
 

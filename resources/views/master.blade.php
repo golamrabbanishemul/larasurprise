@@ -37,13 +37,13 @@
                 ?>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{url('category-page/'.$category->id)}}">{{$category->name}} </a>
+                    <a class="nav-link text-uppercase" href="{{url('category-page/'.$category->id)}}">{{$category->name}} </a>
                 </li>
 
                 <?php } elseif ($category->parent_category == 0 && !empty($subCategories)) {  ?>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+                    <a class="nav-link dropdown-toggle text-uppercase" id="navbarDropdownMenuLink"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{$category->name }}
                     </a>
@@ -54,17 +54,17 @@
                         $sub_sub_check = \App\Category::where('parent_category', $check->id)->first();
                         if (empty($sub_sub_check)) {   ?>
 
-                        <li><a class="dropdown-item" href="{{url('category-page/'.$check->id)}}">{{$check->name}}</a>
+                        <li><a class="dropdown-item text-uppercase" href="{{url('category-page/'.$check->id)}}">{{$check->name}}</a>
                         </li>
 
                         <?php } elseif (!empty($sub_sub_check)) { ?>
 
-                        <li><a class="dropdown-item dropdown-toggle" href="#">{{$check->name}}</a>
+                        <li><a class="dropdown-item dropdown-toggle text-uppercase" href="#">{{$check->name}}</a>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <?php
                                 $sub_sub_categories = \App\Category::where('parent_category', $check->id)->get();
                                 foreach ($sub_sub_categories as $sub_sub_category) {  ?>
-                                <li><a class="dropdown-item"
+                                <li><a class="dropdown-item text-uppercase"
                                        href="{{url('category-page/'.$sub_sub_category->id)}}">{{$sub_sub_category->name}}</a>
                                 </li>
                                 <?php } ?>

@@ -268,7 +268,7 @@ Gallery page start
     background: #6f93ee;
     padding: 0.5em 0.8em;
     color: #fff;
-    border-radius: 25px 0px;
+    border-radius: 25px 0;
     text-align: center;
 }
 
@@ -285,4 +285,31 @@ Gallery page start
 
 .gallery-image img {
     height: 14em;
+}
+
+
+/*=================================
+Food page start
+==================================*/
+
+.food-wrapper {
+    margin: 6em 0;
+}
+
+.card {
+    height: 17em;
+}
+
+.card:hover {
+    box-shadow: 1px 3px 10px rgba(5,5,5,0.12);
+}
+
+
+
+.card-img-top {
+    height: 11em;
+}
+
+.food {
+    margin: 1em 0;
 }
