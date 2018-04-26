@@ -29,9 +29,15 @@
                                 <div class="order-2 order-md-1 col-md-6 order-md-2">
                                     <div class="section-title text-white bar">{{@$sub_category->name}}</div>
                                     <div class="text-white">{!!str_limit(@$sub_category->description,300) !!}</div>
+                                   @if(!count($sub_category->post)>0)
                                     <button onclick='location.href = "{{url('category-page/'.@$sub_category['id'])}}"' type="button"
                                             class="btn btn-outline-light    ">More
                                     </button>
+                                        @else
+                                        <button onclick='location.href = "{{url('post-page/'.@$sub_category['id'])}}"' type="button"
+                                            class="btn btn-outline-light    ">More
+                                    </button>
+                                       @endif
                                 </div>
                                 <div class=" order-1 order-md-2 col-md-6">
                                     <img src="{{asset('images/'.@$sub_category->image)}}" class="img-fluid rounded"

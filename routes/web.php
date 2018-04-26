@@ -17,6 +17,7 @@
 */
 Route::get('/','WelcomeController@index');
 Route::get('/category-page/{id}','PageController@show');
+Route::get('/post-page/{id}','PageController@post_show');
 
 
 Route::get('/gallery',function (){

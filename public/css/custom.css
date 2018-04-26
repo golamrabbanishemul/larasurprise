@@ -229,6 +229,7 @@ Single Category Page start
     height: 24em;
     width: 100%;
     margin: 3em 0 4em;
+    box-shadow: 1px 10px 40px rgba(111, 147, 238, 0.68);
 }
 
 .category-name {
@@ -293,7 +294,7 @@ Food page start
 ==================================*/
 
 .food-wrapper {
-    margin: 6em 0;
+    margin: 2em 0;
 }
 
 .card {

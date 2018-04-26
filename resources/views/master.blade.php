@@ -59,15 +59,20 @@
 
                         <?php } elseif (!empty($sub_sub_check)) { ?>
 
-                        <li><a class="dropdown-item dropdown-toggle text-uppercase" href="#">{{$check->name}}</a>
+                        <li><a class="dropdown-item dropdown-toggle text-uppercase" href="{{url('category-page/'.$check->id)}}">{{$check->name}}</a>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <?php
-                                $sub_sub_categories = \App\Category::where('parent_category', $check->id)->get();
+                                $sub_sub_categories = \App\Category::where('parent_category', $check->id)->with('post')->get();
                                 foreach ($sub_sub_categories as $sub_sub_category) {  ?>
+                                <?php if(count($sub_sub_category->post) > 0){?>
                                 <li><a class="dropdown-item text-uppercase"
+                                       href="{{url('post-page/'.$sub_sub_category->id)}}">{{$sub_sub_category->name}}</a>
+                                </li>
+                                    <?php }else{?>
+                                    <li><a class="dropdown-item text-uppercase"
                                        href="{{url('category-page/'.$sub_sub_category->id)}}">{{$sub_sub_category->name}}</a>
                                 </li>
-                                <?php } ?>
+                                <?php }} ?>
                             </ul>
                         </li>
                         <?php }  } ?>

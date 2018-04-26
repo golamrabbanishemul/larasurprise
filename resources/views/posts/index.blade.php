@@ -1,17 +1,21 @@
 @extends('admin.admin_master')
 @section('title','All Posts')
 @section('main_content')
-    <div class="card mt-3">
-        <div class="card-header">
+    <div class="bg-light rounded p-2 mt-3">
+        {{--<div class="card-header">--}}
             <div class="d-inline pr-4">ALL POSTS</div>
             <div class="d-inline"><a href="{{route('posts.create')}}" class="btn btn-outline-primary btn-sm"> Add New
                     +</a></div>
-        </div>
-        <div class="card-body">
+        {{--</div>--}}
+    </div>
+    {{--<div class="card">--}}
+        {{--<div class="card-body">--}}
             <table class="table table-bordered  mt-1">
                 <thead class="bg-light">
                 <tr>
                     <th scope="col">TITLE</th>
+                    <th scope="col">PRICE</th>
+                    <th scope="col">CATEGORY</th>
                     <th scope="col">IMAGE</th>
                     <th scope="col">STATUS</th>
                     <th scope="col">ACTION</th>
@@ -21,6 +25,8 @@
                 @foreach( $posts as $post)
                     <tr>
                         <td>{{$post->title}}</td>
+                        <td>{{$post->price}}</td>
+                        <td>{{$post->category->name}}</td>
                         <td>
                             @if(!empty($post->image))
                                 <img width="100" height="60" src="{{asset('images/'.$post->image)}}" alt="image">
@@ -28,11 +34,13 @@
                         </td>
                         <td>
                             @if($post->publication_status==1)
-                                <a class="btn btn-success justify-content-center" href="{{asset('unpublished-post/'.$post->id)}}">
+                                <a class="btn btn-success justify-content-center"
+                                   href="{{asset('unpublished-post/'.$post->id)}}">
                                     <i class="far fa-thumbs-down"></i>
                                 </a>
                             @else
-                                <a class="btn btn-danger justify-content-center" href="{{asset('published-post/'.$post->id)}}">
+                                <a class="btn btn-danger justify-content-center"
+                                   href="{{asset('published-post/'.$post->id)}}">
                                     <i class="far fa-thumbs-up"></i>
                                 </a>
                             @endif
@@ -46,6 +54,6 @@
                 @endforeach
                 </tbody>
             </table>
-        </div>
-    </div>
+        {{--</div>--}}
+    {{--</div>--}}
 @endsection
