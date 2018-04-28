@@ -6,6 +6,7 @@
             <div class="d-inline pr-4">ALL POSTS</div>
             <div class="d-inline"><a href="{{route('posts.create')}}" class="btn btn-outline-primary btn-sm"> Add New
                     +</a></div>
+
         {{--</div>--}}
     </div>
     {{--<div class="card">--}}
@@ -18,7 +19,7 @@
                     <th scope="col">CATEGORY</th>
                     <th scope="col">IMAGE</th>
                     <th scope="col">STATUS</th>
-                    <th scope="col">ACTION</th>
+                    <th width="15%" scope="col">ACTION</th>
                 </tr>
                 </thead>
                 <tbody>

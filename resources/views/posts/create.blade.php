@@ -4,7 +4,7 @@
     <div class="col-sm-10 pb-5 mb-5">
         <div class="card mt-3">
             <div class="card-header">
-                <div class="d-inline pr-4">CREATE POST</div>
+                <div class="d-inline pr-4">CREATE NEW POST</div>
             </div>
             <div class="card-body">
                 @if(Session::get('message'))
