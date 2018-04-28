@@ -37,13 +37,13 @@
                 ?>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{url('category-page/'.$category->id)}}">{{$category->name}} </a>
+                    <a class="nav-link text-uppercase" href="{{url('category-page/'.$category->id)}}">{{$category->name}} </a>
                 </li>
 
                 <?php } elseif ($category->parent_category == 0 && !empty($subCategories)) {  ?>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+                    <a class="nav-link dropdown-toggle text-uppercase" id="navbarDropdownMenuLink"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{$category->name }}
                     </a>
@@ -54,20 +54,25 @@
                         $sub_sub_check = \App\Category::where('parent_category', $check->id)->first();
                         if (empty($sub_sub_check)) {   ?>
 
-                        <li><a class="dropdown-item" href="{{url('category-page/'.$check->id)}}">{{$check->name}}</a>
+                        <li><a class="dropdown-item text-uppercase" href="{{url('category-page/'.$check->id)}}">{{$check->name}}</a>
                         </li>
 
                         <?php } elseif (!empty($sub_sub_check)) { ?>
 
-                        <li><a class="dropdown-item dropdown-toggle" href="#">{{$check->name}}</a>
+                        <li><a class="dropdown-item dropdown-toggle text-uppercase" href="{{url('category-page/'.$check->id)}}">{{$check->name}}</a>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <?php
-                                $sub_sub_categories = \App\Category::where('parent_category', $check->id)->get();
+                                $sub_sub_categories = \App\Category::where('parent_category', $check->id)->with('post')->get();
                                 foreach ($sub_sub_categories as $sub_sub_category) {  ?>
-                                <li><a class="dropdown-item"
+                                <?php if(count($sub_sub_category->post) > 0){?>
+                                <li><a class="dropdown-item text-uppercase"
+                                       href="{{url('post-page/'.$sub_sub_category->id)}}">{{$sub_sub_category->name}}</a>
+                                </li>
+                                    <?php }else{?>
+                                    <li><a class="dropdown-item text-uppercase"
                                        href="{{url('category-page/'.$sub_sub_category->id)}}">{{$sub_sub_category->name}}</a>
                                 </li>
-                                <?php } ?>
+                                <?php }} ?>
                             </ul>
                         </li>
                         <?php }  } ?>
@@ -87,18 +92,27 @@
 <div class="section8 bg-primary py-5">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-4 contactus">
-                <h5 class="text-white">Contact Us</h5>
-                <p class="text-white">We are a leading end-to-end infrastructure support provider having Nationwide
-                    Telecommunication Transmission Network.
-                </p>
-                <p class="text-white"><i class="fas fa-map-marker"></i> 18, Karwan Bazar Commercial Area Dhaka -1205,
-                    Bangladesh.</p>
-                <p class="text-white"><i class="fas fa-phone"></i> +880 2 222333444-5</p>
-                <p class="text-white"><i class="fas fa-envelope"></i> info@surprisecommunications.net</p>
+            <div class="col-12 col-md-6 contactus">
+                <h5 class="text-white pb-3">Contact Us</h5>
+                <div class="row">
+                <div class="col-md-6">
+                    <p class="text-white"> <i class="fas fa-user"></i> Mohammed shahadat hossain
+                    </p>
+                    <p class="text-white"><i class="fas fa-map-marker"></i> 10 Mead Road Tmavua Suva Fiji</p>
+                    <p class="text-white"><i class="fas fa-phone"></i> +6792950541</p>
+                    <p class="text-white"><i class="fas fa-envelope"></i> surprseproducts@gmail.com</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-white"> <i class="fas fa-user"></i> Mohammed shahadat hossain
+                    </p>
+                    <p class="text-white"><i class="fas fa-map-marker"></i> 10 Mead Road Tmavua Suva Fiji</p>
+                    <p class="text-white"><i class="fas fa-phone"></i> +6792950541</p>
+                    <p class="text-white"><i class="fas fa-envelope"></i> surprseproducts@gmail.com</p>
+                </div>
+                </div>
             </div>
-            <div class="col-12 col-md-4">
-                <h5 class="text-white">Contact With Social</h5>
+            <div class="col-12 col-md-3">
+                <h5 class="text-white pb-3">Contact With Social</h5>
                 <ul class="social">
                     <li><a target="_Blank" href="https://www.facebook.com/"> <i class="fab fa-facebook-f"></i></a>
                         Facebook
@@ -107,22 +121,22 @@
                     <li><a target="_Blank" href="#"><i class="fab fa-twitter"></i></a> Twitter</li>
                 </ul>
             </div>
-            <div class="col-12 col-md-3 col-offset-md-1">
-                <h5 class="text-white">Any Query</h5>
-                <form class="border border-mute rounded p-2">
+            <div class="col-12 col-md-3 ">
+                <h5 class="text-white pb-3">Any Query</h5>
+                <form class="border border-info any-query rounded p-2">
                     <div class="form-group my-0 py-0">
                         <label for="name" class="text-white my-0">
                             <small>Name</small>
                         </label>
                         <input type="text" class="form-control form-control-sm py-0" id="name" aria-describedby="name"
-                               placeholder="Enter Name">
+                               placeholder="Enter Your Name">
                     </div>
                     <div class="form-group my-0">
                         <label for="exampleInputEmail1" class="text-white my-0">
                             <small>Email address</small>
                         </label>
                         <input type="email" class="form-control form-control-sm py-0" id="exampleInputEmail1"
-                               aria-describedby="emailHelp" placeholder="Enter email">
+                               aria-describedby="emailHelp" placeholder="Enter Your email">
                     </div>
                     <div class="form-group my-0">
                         <label for="exampleFormControlTextarea1" class="text-white my-0">

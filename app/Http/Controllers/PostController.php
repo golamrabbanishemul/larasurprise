@@ -44,7 +44,7 @@ class PostController extends Controller
         $this->validate($request, [
             'title' => 'required | max:255',
             'image' => 'required',
-            'description' => 'required',
+            'description' => 'sometimes',
             'category_id' => 'required',
             'publication_status' => 'required'
 
@@ -59,7 +59,7 @@ class PostController extends Controller
             $image = $request->file('image');
             $file_name = time() . '.' . $image->getClientOriginalExtension();
             $location = public_path('images/' . $file_name);
-            Image::make($image)->save($location, 30);
+            Image::make($image)->resize(540,269)->save($location, 50);
             $post->image = $file_name;
         }
 
@@ -135,7 +135,7 @@ class PostController extends Controller
             $image = $request->file('image');
             $file_name = time() . "." . $image->getClientOriginalExtension();
             $file_location = public_path('images/' . $file_name);
-            Image::make($image)->save($file_location, 90);
+            Image::make($image)->resize(540,269)->save($file_location, 90);
             //get old file
             $oldFilename = $post->image;
             //update database

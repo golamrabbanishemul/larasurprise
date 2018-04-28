@@ -34,6 +34,13 @@ class CategoryController extends Controller
         return response()->json($sub_categories);
 
     }
+    public function sub_subcategory($id)
+    {
+
+        $sub_subcategories = DB::select(DB::raw("SELECT sc.name as sub_subcategory_name, sc.id as sub_subcategory_id FROM categories sc JOIN categories c ON c.id=sc.parent_category WHERE sc.parent_category = $id"));
+        return response()->json($sub_subcategories);
+
+    }
 
 
     public function create()
@@ -53,6 +60,7 @@ class CategoryController extends Controller
 
         $this->validate($request, [
             'name' => 'required|max:255',
+            'title' => 'sometimes|max:255',
             'description' => 'sometimes',
             'image' => 'sometimes',
             'publication_status' => 'required',
@@ -60,9 +68,14 @@ class CategoryController extends Controller
         ]);
         $category = new Category();
         $category->name = $request->name;
+        $category->title = $request->title;
+        $subsub = $request->sub_subcategory;
         $sub = $request->sub_category;
         $parent = $request->parent_category;
-        if ($sub) {
+        if($subsub){
+            $categoryid =$request->sub_subcategory;
+        }
+        elseif ($sub) {
             $categoryid = $request->sub_category;
         } elseif ($parent) {
             $categoryid = $request->parent_category;
@@ -76,7 +89,7 @@ class CategoryController extends Controller
             $image = $request->file('image');
             $file_name = time() . '.' . $image->getClientOriginalExtension();
             $location = public_path('images/' . $file_name);
-            Image::make($image)->save($location, 90);
+            Image::make($image)->resize(540,269)->save($location, 90);
             $category->image = $file_name;
         }
         $category->description = $request->description;
@@ -124,6 +137,7 @@ class CategoryController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
+            'title' => 'sometimes|max:255',
             'parent_cat' => 'required',
             'description' => 'sometimes',
             'position' => 'sometimes',
@@ -133,14 +147,15 @@ class CategoryController extends Controller
 
 
         $category->name = $request->name;
+        $category->title = $request->title;
 
         $category->parent_category = $request->parent_cat;
         if ($request->hasFile('image')) {
 
             $image = $request->file('image');
             $file_name = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('images/' . $file_name);
-            Image::make($image)->save($location, 90);
+            $location = public_path('../images/' . $file_name);
+            Image::make($image)->resize(540,269)->save($location, 90);
             $old = $category->image;
             $category->image = $file_name;
             if ($old) {

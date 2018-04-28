@@ -12,7 +12,7 @@ class WelcomeController extends Controller
 
     public function index()
     {
-
+$home= Category::where('name','Home')->where('publication_status',1)->first();
         $cat1 = Category::where('position',1)->where('publication_status',1)->first();
         $cat2 = Category::where('position',2)->where('publication_status',1)->first();
         $cat3 = Category::where('position',3)->where('publication_status',1)->first();
@@ -20,11 +20,12 @@ class WelcomeController extends Controller
         $cat5 = Category::where('position',5)->where('publication_status',1)->first();
         $cat6 = Category::where('position',6)->where('publication_status',1)->first();
 
-
+$services= Category::where('parent_category',2)->with('ds')->get();
+//dd($service);
        return view('pages.main_content',
            compact('cat1',
                'cat2',
-               'cat3','cat4','cat5','cat6'
+               'cat3','cat4','cat5','cat6','home','services'
            ));
     }
 

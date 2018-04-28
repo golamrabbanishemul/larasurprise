@@ -1,29 +1,29 @@
 @extends('admin.admin_master')
 @section('title','Create Category')
 @section('main_content')
-            <div class="col-sm-10">
-    <div class="card mt-3">
-        <div class="card-header">
-            <div class="d-inline pr-4">CREATE CATEGORIES</div>
-        </div>
-        <div class="card-body">
-            @if(Session::get('message'))
-                <div class="alert alert-success alert-dismissible fade show success_msg" role="alert">
-                    <h4>{{Session::get('message')}}</h4>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
-            @if(count($errors)>0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{$error}}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+    <div class="col-sm-10 mb-5 pb-5">
+        <div class="card mt-3">
+            <div class="card-header">
+                <div class="d-inline pr-4">CREATE CATEGORIES</div>
+            </div>
+            <div class="card-body">
+                @if(Session::get('message'))
+                    <div class="alert alert-success alert-dismissible fade show success_msg" role="alert">
+                        <h4>{{Session::get('message')}}</h4>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+                @if(count($errors)>0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 {!! Form::open(['route'=>['category.store'],'files'=>true]) !!}
                 <div class="form-group">
                     <label for="parent-category">Main Category </label>
@@ -37,9 +37,19 @@
                         {{--<option value="">Select Sub Category</option>--}}
                     </select>
                 </div>
+                    <div class="form-group">
+                    <label for="sub_sub_category">Sub Sub Category </label>
+                    <select id="sub_sub_category" name="sub_subcategory" class="form-control">
+                        {{--<option value="">Select Sub Category</option>--}}
+                    </select>
+                </div>
                 <div class="form-group">
                     {{Form::label('name', 'Name:')}}
                     {{Form::text('name',null,['class'=>'form-control','autofocus','required'])}}
+                </div>
+                <div class="form-group">
+                    {{Form::label('title', 'Title:')}}
+                    {{Form::text('title',null,['class'=>'form-control'])}}
                 </div>
                 <div class="form-group">
                     {{Form::label('description', 'Description')}}

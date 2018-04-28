@@ -11,13 +11,22 @@ class Category extends Model
         return $this->hasMany(Post::class);
     }
 
-    public function children()
+//    public function children()
+//    {
+//        return $this->belongsTo(Category::class, 'parent_category','id');
+//    }
+//
+//    public function parent()
+//    {
+//        return Category::where('id', '=', $this->parent_category)->get();
+//    }
+
+    public function ds()
     {
-        return $this->belongsTo(Category::class, 'parent_category','id');
+        return $this->hasMany(self::class,'parent_category','id');
     }
 
-    public function parent()
-    {
-        return Category::where('id', '=', $this->parent_category)->get();
+    public function us(){
+        return $this->belongsTo(self::class,'id','parent_category');
     }
 }

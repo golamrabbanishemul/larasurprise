@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Gallery;
+use App\GalleryPost;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -48,16 +50,26 @@ class PageController extends Controller
     public function show($id)
     {
        $category = Category::where('id',$id)->first();
+
+       $sub_categories = Category::where('parent_category',$id)->with('post')->get();
+//       dd($sub_categories);
        $posts = Post::where('category_id',$id)->where('publication_status',1)->get();
-       return view('pages.category_page',compact('category','posts'));
+       $galleries= Gallery::with('gallery_posts')->where('publication_status',1)->get();
+
+       if(strtolower($category->name) == 'image gallery'){
+           return view('pages.gallery_page',compact('category','galleries'));
+       }
+       return view('pages.category_page',compact('category','sub_categories','posts'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    public function post_show($id)
+    {
+        $category = Category::where('id',$id)->first();
+        $posts= Post::where('category_id',$id)->where('publication_status',1)->get();
+        return view('pages.post',compact('posts','category'));
+    }
+
     public function edit($id)
     {
         //

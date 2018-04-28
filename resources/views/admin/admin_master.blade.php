@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+    <script src='https://cdn.tinymce.com/4/tinymce.min.js'></script>
     {{--<title>Surprise Communication</title>--}}
     <title>@yield('title')</title>
     <style>
@@ -19,7 +19,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">SURPRISE</a>
+    <a class="navbar-brand" href="{{route('home')}}">SURPRISE</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -61,17 +61,19 @@
                         </a>
                         <a href="{{route('posts.index')}}" class="list-group-item list-group-item-action">Manage Posts</a>
                         <a href="{{route('galleries.index')}}" class="list-group-item list-group-item-action">Manage Gallery</a>
+                        <a href="{{route('gposts.index')}}" class="list-group-item list-group-item-action">Manage Gallery Image</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-9 mb-5 pb-5">
             @yield('main_content')
         </div>
     </div>
 </div>
-<div class="container-fluid bg-dark py-3 mt-5">
+<div class="container-fluid fixed-bottom bg-dark py-3 mt-5">
     <div class="row">
+
         <p class="text-center text-white">&copy;surprise communication</p>
 
     </div>
@@ -116,6 +118,26 @@
 
                $.each(data, function (key, value) {
                    $('#sub_category').append($('<option>').text(value.sub_category_name).attr('value', value.sub_category_id));
+               });
+           }
+
+       }) ;
+    });
+
+    $('body').on('change','#sub_category',function () {
+        var id = $(this).val();
+       $.ajax({
+           type:'GET',
+           dataType:'json',
+           url:"{{url('sub-subcategory')}}"+"/"+id,
+           beforeSend: function () {
+               $('#sub_sub_category').html("");
+           },
+           success: function (data) {
+               $('#sub_sub_category').append($('<option>').text('select sub sub category').attr('value',''));
+
+               $.each(data, function (key, value) {
+                   $('#sub_sub_category').append($('<option>').text(value.sub_subcategory_name).attr('value', value.sub_subcategory_id));
                });
            }
 
