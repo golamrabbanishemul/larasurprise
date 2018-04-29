@@ -19,6 +19,7 @@ Route::get('/','WelcomeController@index');
 Route::get('/category-page/{id}','PageController@show');
 Route::get('/post-page/{id}','PageController@post_show');
 
+Route::post('any-query','WelcomeController@any_query')->name('any-query');
 
 Route::get('/gallery',function (){
    return view('pages.gallery_page');

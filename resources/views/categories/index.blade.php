@@ -21,7 +21,6 @@
             <table class="table table-bordered  mt-1">
                 <thead class="bg-light">
                 <tr>
-
                     <th scope="col">CATEGORY</th>
                     <th scope="col">IMAGE</th>
                     <th scope="col">STATUS</th>
@@ -54,6 +53,7 @@
                             {!! Html::decode(Html::linkRoute('category.edit','<i class="far fa-edit"></i>', [$category->id],['class'=>'btn btn-info','style'=>'float:left; margin-right:5px'])) !!}
                             {!! Form::open(['route'=>['category.destroy',$category->id],'method'=>'DELETE']) !!}
                             {{Form::button( '<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger','onclick'=>'return confirm("Are You Sure You Want To Delete This! ")'])}}
+                            {{Form::close()}}
                         </td>
                     </tr>
                 @endforeach

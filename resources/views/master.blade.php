@@ -127,26 +127,27 @@
             </div>
             <div class="col-12 col-md-3 ">
                 <h5 class="text-white pb-3">Any Query</h5>
-                <form class="border border-info any-query rounded p-2">
+                <form action="{{route('any-query')}}" method="post" class="border border-info any-query rounded p-2">
+                    @csrf
                     <div class="form-group my-0 py-0">
                         <label for="name" class="text-white my-0">
                             <small>Name</small>
                         </label>
-                        <input type="text" class="form-control form-control-sm py-0" id="name" aria-describedby="name"
+                        <input type="text" class="form-control form-control-sm py-0" name="name" id="name" aria-describedby="name"
                                placeholder="Enter Your Name">
                     </div>
                     <div class="form-group my-0">
                         <label for="exampleInputEmail1" class="text-white my-0">
                             <small>Email address</small>
                         </label>
-                        <input type="email" class="form-control form-control-sm py-0" id="exampleInputEmail1"
+                        <input type="email" class="form-control form-control-sm py-0" name="email" id="exampleInputEmail1"
                                aria-describedby="emailHelp" placeholder="Enter Your email">
                     </div>
                     <div class="form-group my-0">
                         <label for="exampleFormControlTextarea1" class="text-white my-0">
                             <small>Example textarea</small>
                         </label>
-                        <textarea class="form-control form-control-sm py-0" id="exampleFormControlTextarea1"
+                        <textarea class="form-control form-control-sm py-0" name="message" id="exampleFormControlTextarea1"
                                   rows="3"></textarea>
                     </div>
                     <button type="submit" class="btn btn-outline-light my-1 py-0">Submit</button>

@@ -44,7 +44,7 @@
                             <div class="section-title text-uppercase bar">{{@$service->name}}</div>
                             <div>{!! str_limit(@$service->description,300) !!}</div>
                             <button onclick='location.href = "{{url('category-page/'.@$service['id'])}}"'
-                                    type="button" class="btn btn-outline-light">More
+                                    type="button" class="btn btn-outline-info">More
                             </button>
                         </div>
                         <div class=" order-1 order-md-2 col-md-6">
@@ -101,29 +101,29 @@
             <!-- section5 end -->
             @continue
         @endif
+        {{--@if(6 == $service->position)--}}
+            {{--<!-- section6 -->--}}
+            {{--<div class="section6 my-3">--}}
+                {{--<div class="container">--}}
+                    {{--<div class="row">--}}
+                        {{--<div class="order-2 order-md-1 col-md-6 order-md-2">--}}
+                            {{--<div class="section-title text-uppercase bar">{{@$service->name}}</div>--}}
+                            {{--<div class="text-dark">{!! str_limit(@$service->description,300) !!}</div>--}}
+                            {{--<button onclick='location.href = "{{url('category-page/'.@$service['id'])}}"' type="button"--}}
+                                    {{--class="btn btn-outline-info">More--}}
+                            {{--</button>--}}
+                        {{--</div>--}}
+                        {{--<div class=" order-1 order-md-2 col-md-6">--}}
+                            {{--<img src="{{asset('images/'.@$service->image)}}" class="img-fluid rounded"--}}
+                                 {{--alt="Responsive image">--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<!-- section6 end -->--}}
+            {{--@continue--}}
+        {{--@endif--}}
         @if(6 == $service->position)
-            <!-- section6 -->
-            <div class="section6 my-3">
-                <div class="container">
-                    <div class="row">
-                        <div class="order-2 order-md-1 col-md-6 order-md-2">
-                            <div class="section-title text-uppercase bar">{{@$service->name}}</div>
-                            <div class="text-dark">{!! str_limit(@$service->description,300) !!}</div>
-                            <button onclick='location.href = "{{url('category-page/'.@$service['id'])}}"' type="button"
-                                    class="btn btn-outline-info">More
-                            </button>
-                        </div>
-                        <div class=" order-1 order-md-2 col-md-6">
-                            <img src="{{asset('images/'.@$service->image)}}" class="img-fluid rounded"
-                                 alt="Responsive image">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- section6 end -->
-            @continue
-        @endif
-        @if(7 == $service->position)
             <!-- section7 -->
             <div class="section7 bg-dark">
                 <div class="container">

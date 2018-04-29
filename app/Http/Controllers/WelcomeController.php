@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
-
+use Mail;
 class WelcomeController extends Controller
 {
 
@@ -20,13 +20,30 @@ $home= Category::where('name','home')->where('position',1)->where('publication_s
         $cat5 = Category::where('position',6)->where('publication_status',1)->first();
         $cat6 = Category::where('position',7)->where('publication_status',1)->first();
 
-$services= Category::where('parent_category',2)->with('ds')->get();
-//dd($service);
+$services= Category::where('parent_category',2)->orderBy('position','asc')->with('ds')->get();
+
        return view('pages.main_content',
            compact('cat1',
                'cat2',
                'cat3','cat4','cat5','cat6','home','services'
            ));
+    }
+
+    public function any_query(Request $request)
+    {
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'message' => $request->message
+        ];
+
+        Mail::send($data, function ($message) {
+            $message->to('shemul1990@yahoo.com')->subject('www.spplfiji.com');
+
+        });
+
+        return redirect()->route('/');
+
     }
 
     /**

@@ -88,7 +88,7 @@ class CategoryController extends Controller
 
             $image = $request->file('image');
             $file_name = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('images/' . $file_name);
+            $location = public_path('../images/' . $file_name);
             Image::make($image)->resize(540,269)->save($location, 90);
             $category->image = $file_name;
         }
@@ -193,7 +193,7 @@ class CategoryController extends Controller
     {
         $category->delete();
         if ($category->image) {
-            unlink('../images/' . $category->image);
+            unlink('images/' . $category->image);
         }
         Session::flash('message', 'Category Delete Successfully');
         return redirect()->route('category.index');

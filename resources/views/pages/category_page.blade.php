@@ -13,8 +13,8 @@
     @if($category->description)
     <div class="container">
         <div class="category-body py-5 mb-5">
-            <h1 class="display-5 title">{{@$category->title}}</h1>
-            {!! $category->description!!}
+            <h1 class="display-5 title text-center">{{@$category->title}}</h1>
+            <p class="text-center">{!! $category->description!!}</p>
         </div>
     </div>
     @endif
