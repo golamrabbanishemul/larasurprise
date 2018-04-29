@@ -32,6 +32,9 @@
                 <?php
                 $categories = \App\Category::all();
                 foreach ($categories as $category) {
+                if($category->name == 'home'){
+                    continue;
+                }
                 $subCategories = \App\Category::where('parent_category', $category->id)->first();
                 if ($category->parent_category == 0 && empty($subCategories)) {
                 ?>
@@ -64,6 +67,7 @@
                                 <?php
                                 $sub_sub_categories = \App\Category::where('parent_category', $check->id)->with('post')->get();
                                 foreach ($sub_sub_categories as $sub_sub_category) {  ?>
+
                                 <?php if(count($sub_sub_category->post) > 0){?>
                                 <li><a class="dropdown-item text-uppercase"
                                        href="{{url('post-page/'.$sub_sub_category->id)}}">{{$sub_sub_category->name}}</a>

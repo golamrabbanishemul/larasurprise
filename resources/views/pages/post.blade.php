@@ -12,7 +12,7 @@
     </div>
     @if($category->description)
     <div class="container">
-        <div class="category-body pb-5">
+        <div class="category-body py-5">
             {!! $category->description!!}
         </div>
     </div>

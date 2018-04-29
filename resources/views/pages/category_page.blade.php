@@ -10,18 +10,21 @@
             </div>
         </div>
     </div>
+    @if($category->description)
     <div class="container">
-        <div class="category-body pb-5">
+        <div class="category-body py-5 mb-5">
+            <h1 class="display-5 title">{{@$category->title}}</h1>
             {!! $category->description!!}
         </div>
     </div>
+    @endif
     @php($i=0)
     @foreach($sub_categories as $sub_category)
         @php($i++)
         @if($i%2 == 0)
-            <div class="bg-info py-3">
+            <div class="bg-info py-3 category-row">
                 @else
-                    <div class="bg-primary py-3">
+                    <div class="bg-primary py-3 category-row">
                         @endif
                         <div class="container py-5">
                             <div class="row">

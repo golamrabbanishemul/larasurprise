@@ -1,4 +1,14 @@
 <IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteRule ^(.*)$ public/$1 [L]
+    RewriteEngine on
+    RewriteCond %{HTTP_HOST} ^www\.spplfiji\.com$
+    RewriteRule ^/?$ "http\:\/\/spplfiji\.com\/" [R=301,L]
+
+
+    RewriteCond %{HTTP_USER_AGENT} libwww-perl.*
+    RewriteRule .* ? [F,L]
+
+    RewriteRule ^(.*)$ /public/$1 [L]
 </IfModule>
+
+
+

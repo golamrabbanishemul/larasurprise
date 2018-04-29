@@ -3,9 +3,8 @@
     <!-- section1 -->
     <div class="jumbotron jumbotron-fluid text-center bg-white my-5">
         <div class="container">
-            <h1 class="display-5 title">Welcome to Surprise Product PTE LTD</h1>
-            <p class="lead px-5">Our products and services are designed to spark enthusiasm, improve quality of life,
-                and help conserve natural resources. We want to deliver top quality and reliability. </p>
+            <h1 class="display-5 title">{{@$home->title}}</h1>
+            <p class="lead px-5">{!! @$home->description !!} </p>
             {{--<a href="details.html" class="btn btn-outline-info">More</a>--}}
         </div>
     </div>
@@ -13,7 +12,7 @@
     @php($i=0)
     @foreach($services as $service)
         <?php $i++;?>
-        @if(1 == $service->position)
+        @if(2 == $service->position)
 
             <!-- section2 -->
             <div class="section2 bg-primary">
@@ -36,7 +35,7 @@
             <!-- section2 end -->
             @continue
         @endif
-        @if(2 == $service->position)
+        @if(3 == $service->position)
             <!-- section3 -->
             <div class="section3 bg-white text-dark">
                 <div class="container">
@@ -58,7 +57,7 @@
             <!-- section3 end -->
             @continue
         @endif
-        @if(3 == $service->position)
+        @if(4 == $service->position)
             <!-- section4 -->
             <div class="section4 bg-dark my-3 text-white">
                 <div class="container">
@@ -80,7 +79,7 @@
             <!-- section4 end -->
             @continue
         @endif
-        @if(4 == $service->position)
+        @if(5 == $service->position)
             <!-- section5 -->
             <div class="section5 my-3">
                 <div class="container">
@@ -102,7 +101,7 @@
             <!-- section5 end -->
             @continue
         @endif
-        @if(5 == $service->position)
+        @if(6 == $service->position)
             <!-- section6 -->
             <div class="section6 my-3">
                 <div class="container">
@@ -124,7 +123,7 @@
             <!-- section6 end -->
             @continue
         @endif
-        @if(6 == $service->position)
+        @if(7 == $service->position)
             <!-- section7 -->
             <div class="section7 bg-dark">
                 <div class="container">

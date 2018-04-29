@@ -228,9 +228,10 @@ Single Category Page start
     position: relative;
     height: 24em;
     width: 100%;
-    margin: 3em 0 4em;
+    margin: 3em 0 0;
     box-shadow: 1px 10px 40px rgba(111, 147, 238, 0.68);
 }
+
 
 .category-name {
     position:absolute;

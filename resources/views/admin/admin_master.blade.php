@@ -12,7 +12,7 @@
     {{--<title>Surprise Communication</title>--}}
     <title>@yield('title')</title>
     <style>
-        html,body{
+        html, body {
             font-size: 16px;
         }
     </style>
@@ -59,9 +59,12 @@
                         <a href="{{route('category.index')}}" class="list-group-item list-group-item-action rounded-0">
                             Manage Categories
                         </a>
-                        <a href="{{route('posts.index')}}" class="list-group-item list-group-item-action">Manage Posts</a>
-                        <a href="{{route('galleries.index')}}" class="list-group-item list-group-item-action">Manage Gallery</a>
-                        <a href="{{route('gposts.index')}}" class="list-group-item list-group-item-action">Manage Gallery Image</a>
+                        <a href="{{route('posts.index')}}" class="list-group-item list-group-item-action">Manage
+                            Posts</a>
+                        <a href="{{route('galleries.index')}}" class="list-group-item list-group-item-action">Manage
+                            Gallery</a>
+                        <a href="{{route('gposts.index')}}" class="list-group-item list-group-item-action">Manage
+                            Gallery Image</a>
                     </div>
                 </div>
             </div>
@@ -88,97 +91,115 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
+        integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
+        crossorigin="anonymous"></script>
 <script src="{{asset('js/custom.js')}}"></script>
 <script>
-//create category page get category
+    /*======================================
+    create category page get category
+    * ======================================*/
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: "{{route('parent-category')}}",
+        success: function (data) {
+            $.each(data, function (key, value) {
+                $('#parent-category').append($('<option>').text(value.name).attr('value', value.id));
+            })
+        }
+    });
+
+
+    /*=======================================
+    * create category page get sub category
+    * =======================================*/
+
+    $('body').on('change', '#parent-category', function () {
+        var id = $(this).val();
         $.ajax({
-            type:'GET',
-            dataType:'json',
-            url:"{{route('parent-category')}}",
+            type: 'GET',
+            dataType: 'json',
+            url: "{{url('subcategory')}}" + "/" + id,
+            beforeSend: function () {
+                $('#sub_category').html("");
+            },
             success: function (data) {
-                $.each(data,function (key, value) {
-                    $('#parent-category').append($('<option>').text(value.name).attr('value',value.id));
-                })
-            }
-        });
-//create category page get sub category
-    
-    $('body').on('change','#parent-category',function () {
-        var id = $(this).val();
-       $.ajax({
-           type:'GET',
-           dataType:'json',
-           url:"{{url('subcategory')}}"+"/"+id,
-           beforeSend: function () {
-               $('#sub_category').html("");
-           },
-           success: function (data) {
-               $('#sub_category').append($('<option>').text('select sub category').attr('value',''));
+                $('#sub_category').append($('<option>').text('select sub category').attr('value', ''));
 
-               $.each(data, function (key, value) {
-                   $('#sub_category').append($('<option>').text(value.sub_category_name).attr('value', value.sub_category_id));
-               });
-           }
-
-       }) ;
-    });
-
-    $('body').on('change','#sub_category',function () {
-        var id = $(this).val();
-       $.ajax({
-           type:'GET',
-           dataType:'json',
-           url:"{{url('sub-subcategory')}}"+"/"+id,
-           beforeSend: function () {
-               $('#sub_sub_category').html("");
-           },
-           success: function (data) {
-               $('#sub_sub_category').append($('<option>').text('select sub sub category').attr('value',''));
-
-               $.each(data, function (key, value) {
-                   $('#sub_sub_category').append($('<option>').text(value.sub_subcategory_name).attr('value', value.sub_subcategory_id));
-               });
-           }
-
-       }) ;
-    });
-
-//    for flash message
-$('.success_msg,.error_msg').delay(5000).slideUp();
-
-
-
-//for tinymce  Editor
-//===============================
-$(document).ready(function () {
-    tinymce.init({
-        selector: "textarea",
-        theme: "modern",
-        paste_data_images: true,
-        plugins: ["advlist autolink lists link image charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen", "insertdatetime media nonbreaking save table contextmenu directionality", "emoticons template paste textcolor colorpicker textpattern"],
-        toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-        toolbar2: "print preview media | forecolor backcolor emoticons",
-        image_advtab: true,
-        file_picker_callback: function (callback, value, meta) {
-            if (meta.filetype == 'image') {
-                $('#upload').trigger('click');
-                $('#upload').on('change', function () {
-                    var file = this.files[0];
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        callback(e.target.result, {alt: ''});
-                    };
-                    reader.readAsDataURL(file);
+                $.each(data, function (key, value) {
+                    $('#sub_category').append($('<option>').text(value.sub_category_name).attr('value', value.sub_category_id));
                 });
             }
-        },
-        templates: [{title: 'Test template 1', content: 'Test 1'}, {
-            title: 'Test template 2',
-            content: 'Test 2'
-        }]
+
+        });
     });
-})
+    /*============================
+    * get sub sub category result
+    * ==============================*/
+
+    $('body').on('change', '#sub_category', function () {
+        var id = $(this).val();
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: "{{url('sub-subcategory')}}" + "/" + id,
+            beforeSend: function () {
+                $('#sub_sub_category').html("");
+            },
+            success: function (data) {
+                $('#sub_sub_category').append($('<option>').text('select sub sub category').attr('value', ''));
+
+                $.each(data, function (key, value) {
+                    $('#sub_sub_category').append($('<option>').text(value.sub_subcategory_name).attr('value', value.sub_subcategory_id));
+                });
+            }
+
+        });
+    });
+
+    /*==================================
+    * post search
+    * ==================================*/
+    $('#post_search').on('keypress',function () {
+
+    });
+
+
+    //    for flash message
+    $('.success_msg,.error_msg').delay(5000).slideUp();
+
+
+    //for tinymce  Editor
+    //===============================
+    $(document).ready(function () {
+        tinymce.init({
+            selector: "textarea",
+            theme: "modern",
+            paste_data_images: true,
+            plugins: ["advlist autolink lists link image charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen", "insertdatetime media nonbreaking save table contextmenu directionality", "emoticons template paste textcolor colorpicker textpattern"],
+            toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+            toolbar2: "print preview media | forecolor backcolor emoticons",
+            image_advtab: true,
+            file_picker_callback: function (callback, value, meta) {
+                if (meta.filetype == 'image') {
+                    $('#upload').trigger('click');
+                    $('#upload').on('change', function () {
+                        var file = this.files[0];
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            callback(e.target.result, {alt: ''});
+                        };
+                        reader.readAsDataURL(file);
+                    });
+                }
+            },
+            templates: [{title: 'Test template 1', content: 'Test 1'}, {
+                title: 'Test template 2',
+                content: 'Test 2'
+            }]
+        });
+    })
 </script>
 </body>
 </html>

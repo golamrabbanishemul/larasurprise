@@ -67,7 +67,7 @@ class CategoryController extends Controller
             'position' => 'sometimes'
         ]);
         $category = new Category();
-        $category->name = $request->name;
+        $category->name = strtolower($request->name);
         $category->title = $request->title;
         $subsub = $request->sub_subcategory;
         $sub = $request->sub_category;
@@ -146,7 +146,7 @@ class CategoryController extends Controller
         ]);
 
 
-        $category->name = $request->name;
+        $category->name = strtolower($request->name);
         $category->title = $request->title;
 
         $category->parent_category = $request->parent_cat;
@@ -193,7 +193,7 @@ class CategoryController extends Controller
     {
         $category->delete();
         if ($category->image) {
-            unlink('images/' . $category->image);
+            unlink('../images/' . $category->image);
         }
         Session::flash('message', 'Category Delete Successfully');
         return redirect()->route('category.index');
