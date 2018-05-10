@@ -145,7 +145,7 @@
                     </div>
                     <div class="form-group my-0">
                         <label for="exampleFormControlTextarea1" class="text-white my-0">
-                            <small>Example textarea</small>
+                            <small>Your Message</small>
                         </label>
                         <textarea class="form-control form-control-sm py-0" name="message" id="exampleFormControlTextarea1"
                                   rows="3"></textarea>

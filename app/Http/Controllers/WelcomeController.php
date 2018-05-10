@@ -34,15 +34,16 @@ $services= Category::where('parent_category',2)->orderBy('position','asc')->with
         $data = [
             'name' => $request->name,
             'email' => $request->email,
-            'message' => $request->message
+            'bodyMessage' => $request->message
         ];
 
-        Mail::send($data, function ($message) {
-            $message->to('shemul1990@yahoo.com')->subject('www.spplfiji.com');
+        Mail::send(['html' => 'emails.welcome'], $data, function ($message) {
+            $message->to('shemul1990@yahoo.com')->subject('spplfiji');
 
         });
 
-        return redirect()->route('/');
+
+        return redirect('/');
 
     }
 
